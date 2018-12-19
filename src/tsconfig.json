@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "baseUrl": "../",
+        "outDir": "../dist",
+        "paths": {
+            "maishu-ui-toolkit": [
+                "node_modules/maishu-ui-toolkit/dist/index.d.ts"
+            ],
+            "maishu-wuzhui": [
+                "node_modules/maishu-wuzhui/dist/wuzhui.d.ts"
+            ]
+        }
+    }
+}

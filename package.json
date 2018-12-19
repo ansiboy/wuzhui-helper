@@ -1,0 +1,25 @@
+{
+  "name": "maishu-wuzhui-helper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ansiboy/wuzhui-helper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ansiboy/wuzhui-helper/issues"
+  },
+  "homepage": "https://github.com/ansiboy/wuzhui-helper#readme",
+  "dependencies": {
+    "maishu-dilu": "^1.0.2",
+    "maishu-ui-toolkit": "^1.0.1",
+    "maishu-wuzhui": "^1.1.3"
+  }
+}
