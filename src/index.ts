@@ -17,17 +17,6 @@ export class CustomField<T> extends wuzhui.CustomField<T> {
     }
 }
 
-export function appendGridView(target: HTMLElement,
-    args: { dataSource: wuzhui.DataSource<any>, columns: wuzhui.DataControlField<any>[], pageSize?: number }) {
-
-    let tableElement = document.createElement('table');
-    target.appendChild(tableElement);
-    return createGridView({
-        dataSource: args.dataSource, columns: args.columns, element: tableElement,
-        pageSize: args.pageSize
-    });
-
-}
 export function createGridView<T>(params: wuzhui.GridViewArguments<T>) {
     params = Object.assign({
         pageSize: 10,
@@ -35,9 +24,15 @@ export function createGridView<T>(params: wuzhui.GridViewArguments<T>) {
         columns: null,
     }, params);
 
-    params.pagerSettings = Object.assign({
-        activeButtonClassName: 'active'
-    } as wuzhui.PagerSettings, params.pagerSettings);
+    if (params.pagerSettings == null) {
+        params.pagerSettings = {
+            activeButtonClassName: 'active',
+            buttonContainerWraper: 'ul',
+            buttonWrapper: 'li',
+            buttonContainerClassName: 'pagination',
+            showTotal: true
+        }
+    }
 
     console.assert(params.element != null, 'element can not null.');
     params.element.className = 'table table-striped table-bordered table-hover';
