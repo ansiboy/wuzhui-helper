@@ -1,11 +1,11 @@
 {
   "name": "maishu-wuzhui-helper",
-  "version": "1.1",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p src"
+    "build": "grunt build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,19 @@
   },
   "homepage": "https://github.com/ansiboy/wuzhui-helper#readme",
   "dependencies": {
+    "@types/react": "^16.8.10",
+    "@types/react-dom": "^16.8.3",
     "maishu-ui-toolkit": "^1.0.1",
-    "maishu-wuzhui": "^1.1.4"
+    "maishu-wuzhui": "^1.2.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-shell": "^3.0.1",
+    "load-grunt-tasks": "^4.0.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   }
 }

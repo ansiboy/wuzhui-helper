@@ -1,16 +1,17 @@
 {
     "compilerOptions": {
+        "jsx": "react",
         "target": "es6",
-        "module": "umd",
+        "module": "amd",
         "baseUrl": "../",
-        "outDir": "../dist",
+        "outDir": "../out",
         "paths": {
             "maishu-ui-toolkit": [
                 "node_modules/maishu-ui-toolkit/dist/index.d.ts"
             ],
             "maishu-wuzhui": [
-                "node_modules/maishu-wuzhui/dist/wuzhui.d.ts"
+                "node_modules/maishu-wuzhui/dist/index.d.ts"
             ]
-        }
+        },
     }
 }
