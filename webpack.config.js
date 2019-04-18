@@ -18,5 +18,6 @@ module.exports = {
     mode: 'development', // production
     plugins: [
         new webpack.BannerPlugin(license)
-    ]
+    ],
+    externals: ['react', 'react-dom', 'maishu-wuzhui', 'maishu-ui-toolkit']
 }
