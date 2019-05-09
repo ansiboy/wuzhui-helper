@@ -1,11 +1,11 @@
 /*!
- * WUZHUI-HELPER v1.4.0
+ * WUZHUI-HELPER v1.5.0
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
  * Licensed under the MIT License.
  */
-/******/ (function(modules) { // webpackBootstrap
+define(["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__) { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -144,8 +144,8 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPAC
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = maishu-wuzhui;\n\n//# sourceURL=webpack:///external_%22maishu-wuzhui%22?");
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__;\n\n//# sourceURL=webpack:///external_%22maishu-wuzhui%22?");
 
 /***/ })
 
-/******/ });
+/******/ })});;
