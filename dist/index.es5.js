@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.5.0
+ * WUZHUI-HELPER v1.5.5
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -101,7 +101,109 @@ define(["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__) { 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\nvar __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {\n  return new (P || (P = Promise))(function (resolve, reject) {\n    function fulfilled(value) {\n      try {\n        step(generator.next(value));\n      } catch (e) {\n        reject(e);\n      }\n    }\n\n    function rejected(value) {\n      try {\n        step(generator[\"throw\"](value));\n      } catch (e) {\n        reject(e);\n      }\n    }\n\n    function step(result) {\n      result.done ? resolve(result.value) : new P(function (resolve) {\n        resolve(result.value);\n      }).then(fulfilled, rejected);\n    }\n\n    step((generator = generator.apply(thisArg, _arguments || [])).next());\n  });\n};\n\n!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ \"./out-es5/errors.js\")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {\n  \"use strict\";\n\n  Object.defineProperty(exports, \"__esModule\", {\n    value: true\n  });\n\n  function checkboxList(params) {\n    return __awaiter(this, void 0, void 0,\n    /*#__PURE__*/\n    regeneratorRuntime.mark(function _callee() {\n      var dataSource, element, nameField, valueField, r;\n      return regeneratorRuntime.wrap(function _callee$(_context) {\n        while (1) {\n          switch (_context.prev = _context.next) {\n            case 0:\n              if (params) {\n                _context.next = 2;\n                break;\n              }\n\n              throw errors_1.errors.arugmentNull('params');\n\n            case 2:\n              if (params.element) {\n                _context.next = 4;\n                break;\n              }\n\n              throw errors_1.errors.argumentFieldNull('params', 'element');\n\n            case 4:\n              if (params.dataSource) {\n                _context.next = 6;\n                break;\n              }\n\n              throw errors_1.errors.argumentFieldNull('params', 'dataSource');\n\n            case 6:\n              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField;\n              _context.next = 9;\n              return dataSource.select({});\n\n            case 9:\n              r = _context.sent;\n              r.dataItems.map(function (o) {\n                var label = document.createElement('label');\n                var input = document.createElement('input');\n                var span = document.createElement('span');\n                label.appendChild(input);\n                label.appendChild(span);\n                var name = nameField ? o[nameField] : o;\n                var value = valueField ? o[valueField] : o;\n                input.value = \"\".concat(value);\n                span.innerHTML = \"\".concat(name);\n                element.appendChild(label);\n              });\n\n            case 11:\n            case \"end\":\n              return _context.stop();\n          }\n        }\n      }, _callee);\n    }));\n  }\n\n  exports.checkboxList = checkboxList;\n}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),\n\t\t\t\t__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));\n//# sourceMappingURL=checkbox-list.js.map\n\n\n//# sourceURL=webpack:///./out-es5/checkbox-list.js?");
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : new P(function (resolve) {
+        resolve(result.value);
+      }).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function checkboxList(params) {
+    return __awaiter(this, void 0, void 0,
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
+      var dataSource, element, nameField, valueField, r;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (params) {
+                _context.next = 2;
+                break;
+              }
+
+              throw errors_1.errors.arugmentNull('params');
+
+            case 2:
+              if (params.element) {
+                _context.next = 4;
+                break;
+              }
+
+              throw errors_1.errors.argumentFieldNull('params', 'element');
+
+            case 4:
+              if (params.dataSource) {
+                _context.next = 6;
+                break;
+              }
+
+              throw errors_1.errors.argumentFieldNull('params', 'dataSource');
+
+            case 6:
+              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField;
+              _context.next = 9;
+              return dataSource.select({});
+
+            case 9:
+              r = _context.sent;
+              r.dataItems.map(function (o) {
+                var label = document.createElement('label');
+                var input = document.createElement('input');
+                var span = document.createElement('span');
+                label.appendChild(input);
+                label.appendChild(span);
+                var name = nameField ? o[nameField] : o;
+                var value = valueField ? o[valueField] : o;
+                input.value = "".concat(value);
+                span.innerHTML = "".concat(name);
+                element.appendChild(label);
+              });
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+  }
+
+  exports.checkboxList = checkboxList;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=checkbox-list.js.map
+
 
 /***/ }),
 
@@ -113,7 +215,27 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\nvar __
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\n!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {\n  \"use strict\";\n\n  Object.defineProperty(exports, \"__esModule\", {\n    value: true\n  });\n  exports.errors = {\n    arugmentNull: function arugmentNull(paramName) {\n      return new Error(\"Argument '\" + paramName + \"' can not be null.\");\n    },\n    argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {\n      var msg = \"Argument \".concat(argumentName, \" \").concat(fieldName, \" field can not be null or empty.\");\n      return new Error(msg);\n    }\n  };\n}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),\n\t\t\t\t__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));\n//# sourceMappingURL=errors.js.map\n\n\n//# sourceURL=webpack:///./out-es5/errors.js?");
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.errors = {
+    arugmentNull: function arugmentNull(paramName) {
+      return new Error("Argument '" + paramName + "' can not be null.");
+    },
+    argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {
+      var msg = "Argument ".concat(argumentName, " ").concat(fieldName, " field can not be null or empty.");
+      return new Error(msg);
+    }
+  };
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=errors.js.map
+
 
 /***/ }),
 
@@ -125,7 +247,169 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\n!(__WE
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\n!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ \"./out-es5/wrapper.js\"), __webpack_require__(/*! ./checkbox-list */ \"./out-es5/checkbox-list.js\")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1) {\n  \"use strict\";\n\n  function __export(m) {\n    for (var p in m) {\n      if (!exports.hasOwnProperty(p)) exports[p] = m[p];\n    }\n  }\n\n  Object.defineProperty(exports, \"__esModule\", {\n    value: true\n  });\n\n  __export(wrapper_1);\n\n  __export(checkbox_list_1);\n}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),\n\t\t\t\t__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));\n//# sourceMappingURL=index.js.map\n\n\n//# sourceURL=webpack:///./out-es5/index.js?");
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1) {
+  "use strict";
+
+  function __export(m) {
+    for (var p in m) {
+      if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
+  }
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  __export(wrapper_1);
+
+  __export(checkbox_list_1);
+
+  __export(radio_list_1);
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/radio-list.js":
+/*!*******************************!*\
+  !*** ./out-es5/radio-list.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : new P(function (resolve) {
+        resolve(result.value);
+      }).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function radioList(params) {
+    return __awaiter(this, void 0, void 0,
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
+      var dataSource, element, nameField, valueField, dataField, r, getDataSourceItemName, getDataSourceItemValue;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              getDataSourceItemValue = function _ref2(item) {
+                if (!valueField) return item;
+                return item[valueField];
+              };
+
+              getDataSourceItemName = function _ref(item) {
+                if (!nameField) return item;
+                return item[nameField];
+              };
+
+              if (params) {
+                _context.next = 4;
+                break;
+              }
+
+              throw errors_1.errors.arugmentNull('params');
+
+            case 4:
+              if (params.element) {
+                _context.next = 6;
+                break;
+              }
+
+              throw errors_1.errors.argumentFieldNull('params', 'element');
+
+            case 6:
+              if (params.dataSource) {
+                _context.next = 8;
+                break;
+              }
+
+              throw errors_1.errors.argumentFieldNull('params', 'dataSource');
+
+            case 8:
+              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField, dataField = params.dataField;
+              _context.next = 11;
+              return dataSource.select({});
+
+            case 11:
+              r = _context.sent;
+              element.innerHTML = "";
+              r.dataItems.map(function (o) {
+                var label = document.createElement('label');
+                label.className = "radio-inline";
+                var controlElement = document.createElement('input');
+                controlElement.type = "radio";
+                controlElement.name = dataField;
+                var nameElement = document.createElement('span');
+                label.appendChild(controlElement);
+                label.appendChild(nameElement);
+                var itemName = getDataSourceItemName(o);
+                var itemValue = getDataSourceItemValue(o);
+                controlElement.value = "".concat(itemValue);
+                nameElement.innerHTML = "".concat(itemName);
+
+                controlElement.onchange = function (e) {
+                  params.dataItem[dataField] = itemValue;
+                };
+
+                var value = params.dataItem[dataField] || params.defaultValue;
+
+                if (value == itemValue) {
+                  controlElement.checked = true;
+                }
+
+                element.appendChild(label);
+              });
+
+            case 14:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+  }
+
+  exports.radioList = radioList;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=radio-list.js.map
+
 
 /***/ }),
 
@@ -137,7 +421,84 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\n!(__WE
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\n!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ \"maishu-wuzhui\"), __webpack_require__(/*! ./errors */ \"./out-es5/errors.js\")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1) {\n  \"use strict\";\n\n  Object.defineProperty(exports, \"__esModule\", {\n    value: true\n  });\n\n  function createGridView(params) {\n    params = Object.assign({\n      pageSize: 10,\n      dataSource: null,\n      columns: null\n    }, params);\n\n    if (params.pagerSettings == null) {\n      params.pagerSettings = {\n        activeButtonClassName: 'active',\n        buttonContainerWraper: 'ul',\n        buttonWrapper: 'li',\n        buttonContainerClassName: 'pagination',\n        showTotal: true\n      };\n    }\n\n    console.assert(params.element != null, 'element can not null.');\n    params.element.className = 'table table-striped table-bordered table-hover';\n    var gridView = new w.GridView(params);\n    return gridView;\n  }\n\n  exports.createGridView = createGridView;\n\n  function boundField(params) {\n    if (!params) throw errors_1.errors.arugmentNull('params');\n    params.headerStyle = Object.assign({\n      textAlign: 'center'\n    }, params.headerStyle || {});\n    if (params.nullText == null) params.nullText = '';\n    return new w.BoundField(params);\n  }\n\n  exports.boundField = boundField;\n\n  function commandField(params) {\n    if (!params) throw errors_1.errors.arugmentNull('params');\n    return new w.CommandField(params);\n  }\n\n  exports.commandField = commandField;\n\n  function customField(params) {\n    if (!params) throw errors_1.errors.arugmentNull('params');\n    params.headerStyle = Object.assign({\n      textAlign: 'center'\n    }, params.headerStyle || {});\n    var field = new w.CustomField(params);\n    return field;\n  }\n\n  exports.customField = customField;\n\n  function dropdown(args) {\n    return new w.DropDown(args);\n  }\n\n  exports.dropdown = dropdown;\n\n  function textbox(args) {\n    return new w.TextBox(args);\n  }\n\n  exports.textbox = textbox;\n}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),\n\t\t\t\t__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));\n//# sourceMappingURL=wrapper.js.map\n\n\n//# sourceURL=webpack:///./out-es5/wrapper.js?");
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function createGridView(params) {
+    params = Object.assign({
+      pageSize: 10,
+      dataSource: null,
+      columns: null
+    }, params);
+
+    if (params.pagerSettings == null) {
+      params.pagerSettings = {
+        activeButtonClassName: 'active',
+        buttonContainerWraper: 'ul',
+        buttonWrapper: 'li',
+        buttonContainerClassName: 'pagination',
+        showTotal: true
+      };
+    }
+
+    console.assert(params.element != null, 'element can not null.');
+    params.element.className = 'table table-striped table-bordered table-hover';
+    var gridView = new w.GridView(params);
+    return gridView;
+  }
+
+  exports.createGridView = createGridView;
+
+  function boundField(params) {
+    if (!params) throw errors_1.errors.arugmentNull('params');
+    params.headerStyle = Object.assign({
+      textAlign: 'center'
+    }, params.headerStyle || {});
+    if (params.nullText == null) params.nullText = '';
+    return new w.BoundField(params);
+  }
+
+  exports.boundField = boundField;
+
+  function commandField(params) {
+    if (!params) throw errors_1.errors.arugmentNull('params');
+    return new w.CommandField(params);
+  }
+
+  exports.commandField = commandField;
+
+  function customField(params) {
+    if (!params) throw errors_1.errors.arugmentNull('params');
+    params.headerStyle = Object.assign({
+      textAlign: 'center'
+    }, params.headerStyle || {});
+    var field = new w.CustomField(params);
+    return field;
+  }
+
+  exports.customField = customField;
+
+  function dropdown(args) {
+    return new w.DropDown(args);
+  }
+
+  exports.dropdown = dropdown;
+
+  function textbox(args) {
+    return new w.TextBox(args);
+  }
+
+  exports.textbox = textbox;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=wrapper.js.map
+
 
 /***/ }),
 
@@ -148,8 +509,9 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;\n\n!(__WE
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = __WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__;\n\n//# sourceURL=webpack:///external_%22maishu-wuzhui%22?");
+module.exports = __WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__;
 
 /***/ })
 
 /******/ })});;
+//# sourceMappingURL=index.es5.js.map
