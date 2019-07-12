@@ -4,4 +4,6 @@ export declare function checkboxList<T>(params: {
     dataSource: DataSource<T>;
     nameField?: keyof T;
     valueField?: keyof T;
+    dataItem: T;
+    dataField: keyof T;
 }): Promise<void>;

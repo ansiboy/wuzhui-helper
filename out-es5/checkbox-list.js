@@ -39,7 +39,7 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
     return __awaiter(this, void 0, void 0,
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee() {
-      var dataSource, element, nameField, valueField, r;
+      var dataSource, element, nameField, valueField, dataField, dataItem, r, elementDataItems;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -68,15 +68,17 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
               throw errors_1.errors.argumentFieldNull('params', 'dataSource');
 
             case 6:
-              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField;
+              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField, dataField = params.dataField, dataItem = params.dataItem;
               _context.next = 9;
               return dataSource.select({});
 
             case 9:
               r = _context.sent;
+              elementDataItems = [];
               r.dataItems.map(function (o) {
                 var label = document.createElement('label');
                 var input = document.createElement('input');
+                input.type = "checkbox";
                 var span = document.createElement('span');
                 label.appendChild(input);
                 label.appendChild(span);
@@ -84,10 +86,28 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
                 var value = valueField ? o[valueField] : o;
                 input.value = "".concat(value);
                 span.innerHTML = "".concat(name);
+
+                if (value == dataItem[dataField]) {
+                  input.checked = true;
+                }
+
+                elementDataItems.push({
+                  element: input,
+                  dataItem: o
+                });
+
+                input.onchange = function (e) {
+                  dataItem[dataField] = elementDataItems.filter(function (o) {
+                    return o.element.checked;
+                  }).map(function (o) {
+                    return o.dataItem[valueField];
+                  });
+                };
+
                 element.appendChild(label);
               });
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }

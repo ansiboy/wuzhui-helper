@@ -2,8 +2,8 @@ import { DataSource } from 'maishu-wuzhui'
 import { errors } from './errors';
 export async function radioList<T>(params: {
     element: HTMLElement, dataSource: DataSource<T>,
-    nameField?: keyof T, valueField?: keyof T, defaultValue?: any,
-    dataItem: any, dataField: string
+    nameField?: Extract<keyof T, string>, valueField?: keyof T, defaultValue?: any,
+    dataItem: T, dataField: string
 }) {
     if (!params) throw errors.arugmentNull('params')
     if (!params.element) throw errors.argumentFieldNull('params', 'element')

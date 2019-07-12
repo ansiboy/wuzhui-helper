@@ -5,6 +5,6 @@ export declare function radioList<T>(params: {
     nameField?: keyof T;
     valueField?: keyof T;
     defaultValue?: any;
-    dataItem: any;
+    dataItem: T;
     dataField: string;
 }): Promise<void>;
