@@ -1,5 +1,6 @@
 import * as w from 'maishu-wuzhui';
 import { errors } from './errors';
+import { TextBox } from './textbox';
 
 export function createGridView<T>(params: w.GridViewArguments<T> & { headerFixed?: boolean }) {
     params = Object.assign({
@@ -26,7 +27,7 @@ export function createGridView<T>(params: w.GridViewArguments<T> & { headerFixed
 }
 
 export function boundField<T>(params: w.BoundFieldParams<T>) {
-    if (!params) throw errors.arugmentNull('params')
+    if (!params) throw errors.argumentNull('params')
     params.headerStyle = Object.assign({ textAlign: 'center' } as CSSStyleDeclaration, params.headerStyle || {});
     if (params.nullText == null)
         params.nullText = '';
@@ -35,13 +36,13 @@ export function boundField<T>(params: w.BoundFieldParams<T>) {
 }
 
 export function commandField<T>(params: w.CommandFieldParams) {
-    if (!params) throw errors.arugmentNull('params')
+    if (!params) throw errors.argumentNull('params')
 
     return new w.CommandField<T>(params);
 }
 
 export function customField<T>(params: w.CustomFieldParams) {
-    if (!params) throw errors.arugmentNull('params')
+    if (!params) throw errors.argumentNull('params')
 
     params.headerStyle = Object.assign({ textAlign: 'center' } as CSSStyleDeclaration, params.headerStyle || {});
     let field = new w.CustomField<T>(params);
@@ -53,5 +54,5 @@ export function dropdown<T>(args: w.DropDownParams<T>) {
 }
 
 export function textbox<T>(args: w.TextBoxParams<T>) {
-    return new w.TextBox(args)
+    return new TextBox(args)
 }

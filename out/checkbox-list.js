@@ -12,7 +12,7 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
     function checkboxList(params) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!params)
-                throw errors_1.errors.arugmentNull('params');
+                throw errors_1.errors.argumentNull('params');
             if (!params.element)
                 throw errors_1.errors.argumentFieldNull('params', 'element');
             if (!params.dataSource)
@@ -31,6 +31,9 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
                 let value = valueField ? o[valueField] : o;
                 input.value = `${value}`;
                 span.innerHTML = `${name}`;
+                if (dataItem[dataField] && !Array.isArray(dataItem[dataField])) {
+                    throw errors_1.errors.dataFieldValueNotArray(dataField);
+                }
                 if (value == dataItem[dataField]) {
                     input.checked = true;
                 }

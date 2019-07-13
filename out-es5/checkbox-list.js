@@ -49,7 +49,7 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
                 break;
               }
 
-              throw errors_1.errors.arugmentNull('params');
+              throw errors_1.errors.argumentNull('params');
 
             case 2:
               if (params.element) {
@@ -86,6 +86,10 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
                 var value = valueField ? o[valueField] : o;
                 input.value = "".concat(value);
                 span.innerHTML = "".concat(name);
+
+                if (dataItem[dataField] && !Array.isArray(dataItem[dataField])) {
+                  throw errors_1.errors.dataFieldValueNotArray(dataField);
+                }
 
                 if (value == dataItem[dataField]) {
                   input.checked = true;

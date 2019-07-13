@@ -2,7 +2,7 @@ import { DataSource } from 'maishu-wuzhui';
 export declare function radioList<T>(params: {
     element: HTMLElement;
     dataSource: DataSource<T>;
-    nameField?: keyof T;
+    nameField?: Extract<keyof T, string>;
     valueField?: keyof T;
     defaultValue?: any;
     dataItem: T;

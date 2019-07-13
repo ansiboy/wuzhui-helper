@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.5.8
+ * WUZHUI-HELPER v1.6.0
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -114,7 +114,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __awaiter = 
     function checkboxList(params) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!params)
-                throw errors_1.errors.arugmentNull('params');
+                throw errors_1.errors.argumentNull('params');
             if (!params.element)
                 throw errors_1.errors.argumentFieldNull('params', 'element');
             if (!params.dataSource)
@@ -133,6 +133,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __awaiter = 
                 let value = valueField ? o[valueField] : o;
                 input.value = `${value}`;
                 span.innerHTML = `${name}`;
+                if (dataItem[dataField] && !Array.isArray(dataItem[dataField])) {
+                    throw errors_1.errors.dataFieldValueNotArray(dataField);
+                }
                 if (value == dataItem[dataField]) {
                     input.checked = true;
                 }
@@ -162,11 +165,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.errors = {
-        arugmentNull(paramName) {
+        argumentNull(paramName) {
             return new Error("Argument '" + paramName + "' can not be null.");
         },
         argumentFieldNull(argumentName, fieldName) {
             let msg = `Argument ${argumentName} ${fieldName} field can not be null or empty.`;
+            return new Error(msg);
+        },
+        dataFieldValueNotArray(dataField) {
+            let msg = `Type of dataitem ${dataField} field is not array.`;
             return new Error(msg);
         }
     };
@@ -219,7 +226,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __awaiter = 
     function radioList(params) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!params)
-                throw errors_1.errors.arugmentNull('params');
+                throw errors_1.errors.argumentNull('params');
             if (!params.element)
                 throw errors_1.errors.argumentFieldNull('params', 'element');
             if (!params.dataSource)
@@ -268,6 +275,51 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __awaiter = 
 
 /***/ }),
 
+/***/ "./out/textbox.js":
+/*!************************!*\
+  !*** ./out/textbox.js ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class TextBox {
+        constructor(params) {
+            if (params == null)
+                throw errors_1.errors.argumentNull("params");
+            if (!params.element)
+                throw errors_1.errors.argumentFieldNull("params", "element");
+            if (!params.dataField)
+                throw errors_1.errors.argumentFieldNull("params", "dataField");
+            if (!params.dataItem)
+                throw errors_1.errors.argumentFieldNull("params", "dataItem");
+            if (!params.valueType)
+                throw errors_1.errors.argumentFieldNull("params", "valuetype");
+            let { element, dataField, dataItem, valueType } = params;
+            let value = dataItem[dataField];
+            element.value = `${value || ""}`;
+            element.onchange = () => {
+                if (valueType == 'int') {
+                    dataItem[dataField] = Number.parseInt(element.value);
+                }
+                else if (valueType == 'float') {
+                    dataItem[dataField] = Number.parseFloat(element.value);
+                }
+                else {
+                    dataItem[dataField] = element.value;
+                }
+            };
+        }
+    }
+    exports.TextBox = TextBox;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
 /***/ "./out/wrapper.js":
 /*!************************!*\
   !*** ./out/wrapper.js ***!
@@ -275,7 +327,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __awaiter = 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./errors */ "./out/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./errors */ "./out/errors.js"), __webpack_require__(/*! ./textbox */ "./out/textbox.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1, textbox_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function createGridView(params) {
@@ -301,7 +353,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     exports.createGridView = createGridView;
     function boundField(params) {
         if (!params)
-            throw errors_1.errors.arugmentNull('params');
+            throw errors_1.errors.argumentNull('params');
         params.headerStyle = Object.assign({ textAlign: 'center' }, params.headerStyle || {});
         if (params.nullText == null)
             params.nullText = '';
@@ -310,13 +362,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     exports.boundField = boundField;
     function commandField(params) {
         if (!params)
-            throw errors_1.errors.arugmentNull('params');
+            throw errors_1.errors.argumentNull('params');
         return new w.CommandField(params);
     }
     exports.commandField = commandField;
     function customField(params) {
         if (!params)
-            throw errors_1.errors.arugmentNull('params');
+            throw errors_1.errors.argumentNull('params');
         params.headerStyle = Object.assign({ textAlign: 'center' }, params.headerStyle || {});
         let field = new w.CustomField(params);
         return field;
@@ -327,7 +379,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     }
     exports.dropdown = dropdown;
     function textbox(args) {
-        return new w.TextBox(args);
+        return new textbox_1.TextBox(args);
     }
     exports.textbox = textbox;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),

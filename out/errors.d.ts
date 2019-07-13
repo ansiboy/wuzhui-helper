@@ -1,4 +1,5 @@
 export declare let errors: {
-    arugmentNull(paramName: string): Error;
+    argumentNull(paramName: string): Error;
     argumentFieldNull(argumentName: string, fieldName: string): Error;
+    dataFieldValueNotArray(dataField: string): Error;
 };

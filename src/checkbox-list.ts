@@ -4,7 +4,7 @@ export async function checkboxList<T>(params: {
     element: HTMLElement, dataSource: DataSource<T>, nameField?: keyof T, valueField?: keyof T,
     dataItem: T, dataField: Extract<keyof T, string>
 }) {
-    if (!params) throw errors.arugmentNull('params')
+    if (!params) throw errors.argumentNull('params')
     if (!params.element) throw errors.argumentFieldNull('params', 'element')
     if (!params.dataSource) throw errors.argumentFieldNull('params', 'dataSource')
 

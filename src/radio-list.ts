@@ -5,7 +5,7 @@ export async function radioList<T>(params: {
     nameField?: Extract<keyof T, string>, valueField?: keyof T, defaultValue?: any,
     dataItem: T, dataField: string
 }) {
-    if (!params) throw errors.arugmentNull('params')
+    if (!params) throw errors.argumentNull('params')
     if (!params.element) throw errors.argumentFieldNull('params', 'element')
     if (!params.dataSource) throw errors.argumentFieldNull('params', 'dataSource')
 

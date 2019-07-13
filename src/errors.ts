@@ -1,5 +1,5 @@
 export let errors = {
-    arugmentNull(paramName: string) {
+    argumentNull(paramName: string) {
         return new Error("Argument '" + paramName + "' can not be null.");
     },
     argumentFieldNull(argumentName: string, fieldName: string) {

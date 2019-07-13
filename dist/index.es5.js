@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.5.8
+ * WUZHUI-HELPER v1.6.0
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -152,7 +152,7 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
                 break;
               }
 
-              throw errors_1.errors.arugmentNull('params');
+              throw errors_1.errors.argumentNull('params');
 
             case 2:
               if (params.element) {
@@ -189,6 +189,10 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
                 var value = valueField ? o[valueField] : o;
                 input.value = "".concat(value);
                 span.innerHTML = "".concat(name);
+
+                if (dataItem[dataField] && !Array.isArray(dataItem[dataField])) {
+                  throw errors_1.errors.dataFieldValueNotArray(dataField);
+                }
 
                 if (value == dataItem[dataField]) {
                   input.checked = true;
@@ -244,11 +248,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
     value: true
   });
   exports.errors = {
-    arugmentNull: function arugmentNull(paramName) {
+    argumentNull: function argumentNull(paramName) {
       return new Error("Argument '" + paramName + "' can not be null.");
     },
     argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {
       var msg = "Argument ".concat(argumentName, " ").concat(fieldName, " field can not be null or empty.");
+      return new Error(msg);
+    },
+    dataFieldValueNotArray: function dataFieldValueNotArray(dataField) {
+      var msg = "Type of dataitem ".concat(dataField, " field is not array.");
       return new Error(msg);
     }
   };
@@ -363,7 +371,7 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
                 break;
               }
 
-              throw errors_1.errors.arugmentNull('params');
+              throw errors_1.errors.argumentNull('params');
 
             case 4:
               if (params.element) {
@@ -433,6 +441,59 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
 
 /***/ }),
 
+/***/ "./out-es5/textbox.js":
+/*!****************************!*\
+  !*** ./out-es5/textbox.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var TextBox = function TextBox(params) {
+    _classCallCheck(this, TextBox);
+
+    if (params == null) throw errors_1.errors.argumentNull("params");
+    if (!params.element) throw errors_1.errors.argumentFieldNull("params", "element");
+    if (!params.dataField) throw errors_1.errors.argumentFieldNull("params", "dataField");
+    if (!params.dataItem) throw errors_1.errors.argumentFieldNull("params", "dataItem");
+    if (!params.valueType) throw errors_1.errors.argumentFieldNull("params", "valuetype");
+    var element = params.element,
+        dataField = params.dataField,
+        dataItem = params.dataItem,
+        valueType = params.valueType;
+    var value = dataItem[dataField];
+    element.value = "".concat(value || "");
+
+    element.onchange = function () {
+      if (valueType == 'int') {
+        dataItem[dataField] = Number.parseInt(element.value);
+      } else if (valueType == 'float') {
+        dataItem[dataField] = Number.parseFloat(element.value);
+      } else {
+        dataItem[dataField] = element.value;
+      }
+    };
+  };
+
+  exports.TextBox = TextBox;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=textbox.js.map
+
+
+/***/ }),
+
 /***/ "./out-es5/wrapper.js":
 /*!****************************!*\
   !*** ./out-es5/wrapper.js ***!
@@ -443,7 +504,7 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
 "use strict";
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./errors */ "./out-es5/errors.js"), __webpack_require__(/*! ./textbox */ "./out-es5/textbox.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1, textbox_1) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -476,7 +537,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
   exports.createGridView = createGridView;
 
   function boundField(params) {
-    if (!params) throw errors_1.errors.arugmentNull('params');
+    if (!params) throw errors_1.errors.argumentNull('params');
     params.headerStyle = Object.assign({
       textAlign: 'center'
     }, params.headerStyle || {});
@@ -487,14 +548,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
   exports.boundField = boundField;
 
   function commandField(params) {
-    if (!params) throw errors_1.errors.arugmentNull('params');
+    if (!params) throw errors_1.errors.argumentNull('params');
     return new w.CommandField(params);
   }
 
   exports.commandField = commandField;
 
   function customField(params) {
-    if (!params) throw errors_1.errors.arugmentNull('params');
+    if (!params) throw errors_1.errors.argumentNull('params');
     params.headerStyle = Object.assign({
       textAlign: 'center'
     }, params.headerStyle || {});
@@ -511,7 +572,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
   exports.dropdown = dropdown;
 
   function textbox(args) {
-    return new w.TextBox(args);
+    return new textbox_1.TextBox(args);
   }
 
   exports.textbox = textbox;

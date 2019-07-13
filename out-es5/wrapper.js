@@ -1,6 +1,6 @@
 "use strict";
 
-define(["require", "exports", "maishu-wuzhui", "./errors"], function (require, exports, w, errors_1) {
+define(["require", "exports", "maishu-wuzhui", "./errors", "./textbox"], function (require, exports, w, errors_1, textbox_1) {
   "use strict";
 
   Object.defineProperty(exports, "__esModule", {
@@ -33,7 +33,7 @@ define(["require", "exports", "maishu-wuzhui", "./errors"], function (require, e
   exports.createGridView = createGridView;
 
   function boundField(params) {
-    if (!params) throw errors_1.errors.arugmentNull('params');
+    if (!params) throw errors_1.errors.argumentNull('params');
     params.headerStyle = Object.assign({
       textAlign: 'center'
     }, params.headerStyle || {});
@@ -44,14 +44,14 @@ define(["require", "exports", "maishu-wuzhui", "./errors"], function (require, e
   exports.boundField = boundField;
 
   function commandField(params) {
-    if (!params) throw errors_1.errors.arugmentNull('params');
+    if (!params) throw errors_1.errors.argumentNull('params');
     return new w.CommandField(params);
   }
 
   exports.commandField = commandField;
 
   function customField(params) {
-    if (!params) throw errors_1.errors.arugmentNull('params');
+    if (!params) throw errors_1.errors.argumentNull('params');
     params.headerStyle = Object.assign({
       textAlign: 'center'
     }, params.headerStyle || {});
@@ -68,7 +68,7 @@ define(["require", "exports", "maishu-wuzhui", "./errors"], function (require, e
   exports.dropdown = dropdown;
 
   function textbox(args) {
-    return new w.TextBox(args);
+    return new textbox_1.TextBox(args);
   }
 
   exports.textbox = textbox;

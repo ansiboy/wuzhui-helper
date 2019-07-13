@@ -5,5 +5,5 @@ export declare function checkboxList<T>(params: {
     nameField?: keyof T;
     valueField?: keyof T;
     dataItem: T;
-    dataField: keyof T;
+    dataField: Extract<keyof T, string>;
 }): Promise<void>;

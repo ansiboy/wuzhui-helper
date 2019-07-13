@@ -59,7 +59,7 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
                 break;
               }
 
-              throw errors_1.errors.arugmentNull('params');
+              throw errors_1.errors.argumentNull('params');
 
             case 4:
               if (params.element) {

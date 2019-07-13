@@ -12,7 +12,7 @@ define(["require", "exports", "./errors"], function (require, exports, errors_1)
     function radioList(params) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!params)
-                throw errors_1.errors.arugmentNull('params');
+                throw errors_1.errors.argumentNull('params');
             if (!params.element)
                 throw errors_1.errors.argumentFieldNull('params', 'element');
             if (!params.dataSource)
