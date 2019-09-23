@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.6.0
+ * WUZHUI-HELPER v1.8.0
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -104,6 +104,12 @@ define(["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__) { 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
   return new (P || (P = Promise))(function (resolve, reject) {
     function fulfilled(value) {
       try {
@@ -122,9 +128,7 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
     }
 
     function step(result) {
-      result.done ? resolve(result.value) : new P(function (resolve) {
-        resolve(result.value);
-      }).then(fulfilled, rejected);
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
 
     step((generator = generator.apply(thisArg, _arguments || [])).next());
@@ -267,6 +271,136 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 /***/ }),
 
+/***/ "./out-es5/fields/custom-data.js":
+/*!***************************************!*\
+  !*** ./out-es5/fields/custom-data.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, maishu_wuzhui_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function customDataField(params) {
+    return new maishu_wuzhui_1.CustomField({
+      headerText: params.headerText,
+      headerStyle: params.headerStyle,
+      itemStyle: params.itemStyle,
+      createItemCell: function createItemCell() {
+        var cell = new maishu_wuzhui_1.GridViewDataCell({
+          render: function render(dataItem, element) {
+            var r = params.render(dataItem, element);
+            if (r) element.innerHTML = r;
+          }
+        });
+        return cell;
+      }
+    });
+  }
+
+  exports.customDataField = customDataField;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=custom-data.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/fields/date-time.js":
+/*!*************************************!*\
+  !*** ./out-es5/fields/date-time.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, custom_data_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function dateTimeField(args) {
+    return custom_data_1.customDataField({
+      // dataField: args.dataField,
+      headerText: args.headerText,
+      headerStyle: {
+        textAlign: 'center',
+        width: '160px'
+      },
+      itemStyle: {
+        textAlign: 'center',
+        width: "160px"
+      },
+      // dataFormatString: "{gg}"
+      render: function render(dataItem) {
+        var value = dataItem[args.dataField]; // if (typeof value == 'number')
+
+        return toDateTimeString(value);
+      }
+    });
+  }
+
+  exports.dateTimeField = dateTimeField;
+
+  function toDateTimeString(datetime) {
+    if (datetime == null) return null;
+    var d;
+    if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
+    var month = "".concat(d.getMonth() + 1);
+    month = month.length == 1 ? '0' + month : month;
+    var date = "".concat(d.getDate());
+    date = date.length == 1 ? '0' + date : date;
+    var hours = "".concat(d.getHours());
+    hours = hours.length == 1 ? '0' + hours : hours;
+    var minutes = "".concat(d.getMinutes());
+    minutes = minutes.length == 1 ? '0' + minutes : minutes;
+    return "".concat(d.getFullYear(), "-").concat(month, "-").concat(date, " ").concat(hours, ":").concat(minutes);
+  }
+
+  exports.toDateTimeString = toDateTimeString;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=date-time.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/fields/index.js":
+/*!*********************************!*\
+  !*** ./out-es5/fields/index.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./date-time */ "./out-es5/fields/date-time.js"), __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, date_time_1, custom_data_1) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.dateTimeField = date_time_1.dateTimeField;
+  exports.customDataField = custom_data_1.customDataField;
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+//# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
 /***/ "./out-es5/index.js":
 /*!**************************!*\
   !*** ./out-es5/index.js ***!
@@ -277,7 +411,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 "use strict";
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js"), __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./fields/index */ "./out-es5/fields/index.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1) {
   "use strict";
 
   function __export(m) {
@@ -295,6 +429,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
   __export(checkbox_list_1);
 
   __export(radio_list_1);
+
+  __export(maishu_wuzhui_1);
+
+  __export(index_1);
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 //# sourceMappingURL=index.js.map
@@ -313,6 +451,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
   return new (P || (P = Promise))(function (resolve, reject) {
     function fulfilled(value) {
       try {
@@ -331,9 +475,7 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
     }
 
     function step(result) {
-      result.done ? resolve(result.value) : new P(function (resolve) {
-        resolve(result.value);
-      }).then(fulfilled, rejected);
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
     }
 
     step((generator = generator.apply(thisArg, _arguments || [])).next());
