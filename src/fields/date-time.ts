@@ -4,11 +4,9 @@ import { CustomField } from "maishu-wuzhui";
 export function dateTimeField<T>(args: { dataField: Extract<keyof T, string>, headerText: string, }): CustomField<T> {
 
     return customDataField<T>({
-        // dataField: args.dataField,
         headerText: args.headerText,
         headerStyle: { textAlign: 'center', width: '160px' } as CSSStyleDeclaration,
         itemStyle: { textAlign: 'center', width: `160px` } as CSSStyleDeclaration,
-        // dataFormatString: "{gg}"
         render: (dataItem) => {
             let value = dataItem[args.dataField] as any;
             // if (typeof value == 'number')
@@ -21,6 +19,11 @@ export function dateTimeField<T>(args: { dataField: Extract<keyof T, string>, he
 export function toDateTimeString(datetime: number | Date) {
     if (datetime == null)
         return null
+
+    if (typeof datetime == "string"){
+        datetime = new Date(datetime);
+    }
+       
 
     let d: Date
     if (typeof datetime == 'number')

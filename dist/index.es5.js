@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.8.0
+ * WUZHUI-HELPER v1.8.1
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -332,7 +332,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
   function dateTimeField(args) {
     return custom_data_1.customDataField({
-      // dataField: args.dataField,
       headerText: args.headerText,
       headerStyle: {
         textAlign: 'center',
@@ -342,7 +341,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
         textAlign: 'center',
         width: "160px"
       },
-      // dataFormatString: "{gg}"
       render: function render(dataItem) {
         var value = dataItem[args.dataField]; // if (typeof value == 'number')
 
@@ -355,6 +353,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
   function toDateTimeString(datetime) {
     if (datetime == null) return null;
+
+    if (typeof datetime == "string") {
+      datetime = new Date(datetime);
+    }
+
     var d;
     if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
     var month = "".concat(d.getMonth() + 1);

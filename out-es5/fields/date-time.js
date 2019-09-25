@@ -9,7 +9,6 @@ define(["require", "exports", "./custom-data"], function (require, exports, cust
 
   function dateTimeField(args) {
     return custom_data_1.customDataField({
-      // dataField: args.dataField,
       headerText: args.headerText,
       headerStyle: {
         textAlign: 'center',
@@ -19,7 +18,6 @@ define(["require", "exports", "./custom-data"], function (require, exports, cust
         textAlign: 'center',
         width: "160px"
       },
-      // dataFormatString: "{gg}"
       render: function render(dataItem) {
         var value = dataItem[args.dataField]; // if (typeof value == 'number')
 
@@ -32,6 +30,11 @@ define(["require", "exports", "./custom-data"], function (require, exports, cust
 
   function toDateTimeString(datetime) {
     if (datetime == null) return null;
+
+    if (typeof datetime == "string") {
+      datetime = new Date(datetime);
+    }
+
     var d;
     if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
     var month = "".concat(d.getMonth() + 1);

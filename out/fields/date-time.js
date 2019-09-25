@@ -3,11 +3,9 @@ define(["require", "exports", "./custom-data"], function (require, exports, cust
     Object.defineProperty(exports, "__esModule", { value: true });
     function dateTimeField(args) {
         return custom_data_1.customDataField({
-            // dataField: args.dataField,
             headerText: args.headerText,
             headerStyle: { textAlign: 'center', width: '160px' },
             itemStyle: { textAlign: 'center', width: `160px` },
-            // dataFormatString: "{gg}"
             render: (dataItem) => {
                 let value = dataItem[args.dataField];
                 // if (typeof value == 'number')
@@ -19,6 +17,9 @@ define(["require", "exports", "./custom-data"], function (require, exports, cust
     function toDateTimeString(datetime) {
         if (datetime == null)
             return null;
+        if (typeof datetime == "string") {
+            datetime = new Date(datetime);
+        }
         let d;
         if (typeof datetime == 'number')
             d = new Date(datetime);

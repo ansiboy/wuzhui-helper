@@ -37,7 +37,7 @@
         "maishu-chitu-service": "^1.8.5",
         "maishu-dilu": "^1.4.3",
         "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "file:../wuzhui"
+        "maishu-wuzhui": "^1.4.11"
     },
     "description": "",
     "devDependencies": {
@@ -64,5 +64,5 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "types": "./out/index.d.ts",
-    "version": "1.8.0"
+    "version": "1.8.1"
 }
