@@ -37,7 +37,7 @@
         "maishu-chitu-service": "^1.8.5",
         "maishu-dilu": "^1.4.3",
         "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "^1.4.11"
+        "maishu-wuzhui": "^1.7.0"
     },
     "description": "",
     "devDependencies": {
@@ -52,7 +52,7 @@
         "webpack-cli": "^3.3.0"
     },
     "homepage": "https://github.com/ansiboy/wuzhui-helper#readme",
-    "license": "ISC",
+    "license": "MIT",
     "main": "./dist/index.js",
     "name": "maishu-wuzhui-helper",
     "repository": {
@@ -60,9 +60,8 @@
         "url": "git+https://github.com/ansiboy/wuzhui-helper.git"
     },
     "scripts": {
-        "build": "grunt build",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "grunt build"
     },
     "types": "./out/index.d.ts",
-    "version": "1.8.1"
+    "version": "1.8.2"
 }
