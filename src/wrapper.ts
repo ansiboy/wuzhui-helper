@@ -41,7 +41,7 @@ export function commandField<T>(params: w.CommandFieldParams) {
     return new w.CommandField<T>(params);
 }
 
-export function customField<T>(params: w.CustomFieldParams) {
+export function customField<T>(params: w.CustomFieldParams<T>) {
     if (!params) throw errors.argumentNull('params')
 
     params.headerStyle = Object.assign({ textAlign: 'center' } as CSSStyleDeclaration, params.headerStyle || {});
