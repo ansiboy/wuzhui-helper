@@ -1,6 +1,4 @@
-import { CustomField } from "maishu-wuzhui";
-export declare function dateTimeField<T>(args: {
-    dataField: Extract<keyof T, string>;
-    headerText: string;
-}): CustomField<T>;
-export declare function toDateTimeString(datetime: number | Date): string;
+import { BoundField, BoundFieldParams } from "maishu-wuzhui";
+import { FieldValidate } from "../wrapper";
+export declare function dateTimeField<T>(args: BoundFieldParams<T> & FieldValidate): BoundField<T> & FieldValidate;
+export declare function toDateTimeString(datetime: number | Date | string): string;

@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.8.3
+ * WUZHUI-HELPER v1.8.5
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -225,22 +225,57 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./custom-data */ "./out/fields/custom-data.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, custom_data_1) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, maishu_wuzhui_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function dateTimeField(args) {
-        return custom_data_1.customDataField({
-            headerText: args.headerText,
-            headerStyle: { textAlign: 'center', width: '160px' },
-            itemStyle: { textAlign: 'center', width: `160px` },
-            render: (dataItem) => {
-                let value = dataItem[args.dataField];
-                // if (typeof value == 'number')
-                return toDateTimeString(value);
-            }
-        });
+        let field = new DateTimeField(args);
+        let validateRules = {
+            validateRules: args.validateRules
+        };
+        let r = Object.assign(field, validateRules);
+        return r;
     }
     exports.dateTimeField = dateTimeField;
+    class DateTimeField extends maishu_wuzhui_1.BoundField {
+        constructor(args) {
+            super(Object.assign({
+                headerStyle: { textAlign: 'center', width: '160px' },
+                itemStyle: { textAlign: 'center', width: `160px` }
+            }, args));
+            this.inputTips = args.inputTips;
+        }
+        createControl() {
+            let ctrl = super.createControl();
+            let VALUE = "value";
+            Object.defineProperty(ctrl, VALUE, {
+                get() {
+                    let str = ctrl.element.value;
+                    let value;
+                    try {
+                        value = new Date(Date.parse(str));
+                    }
+                    catch (err) {
+                    }
+                    return value;
+                },
+                set(value) {
+                    let str = toDateTimeString(value);
+                    ctrl.element.value = str;
+                }
+            });
+            if (this.inputTips)
+                ctrl.element.placeholder = this.inputTips;
+            return ctrl;
+        }
+        createItemCell(dataItem) {
+            let cell = super.createItemCell(dataItem);
+            cell.formatValue = function (value) {
+                return toDateTimeString(value);
+            };
+            return cell;
+        }
+    }
     function toDateTimeString(datetime) {
         if (datetime == null)
             return null;
@@ -464,7 +499,20 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         params.headerStyle = Object.assign({ textAlign: 'center' }, params.headerStyle || {});
         if (params.nullText == null)
             params.nullText = '';
-        return new w.BoundField(params);
+        let field = new w.BoundField(params);
+        let validateRules = {
+            validateRules: params.validateRules
+        };
+        let r = Object.assign(field, validateRules);
+        let createControl = field.createControl;
+        field.createControl = function () {
+            let ctrl = createControl.apply(this, []);
+            if (params.inputTips)
+                ctrl.element.placeholder = params.inputTips;
+            ctrl.element.className = "form-control";
+            return ctrl;
+        };
+        return r;
     }
     exports.boundField = boundField;
     function commandField(params) {

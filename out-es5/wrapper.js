@@ -38,7 +38,21 @@ define(["require", "exports", "maishu-wuzhui", "./errors", "./textbox"], functio
       textAlign: 'center'
     }, params.headerStyle || {});
     if (params.nullText == null) params.nullText = '';
-    return new w.BoundField(params);
+    var field = new w.BoundField(params);
+    var validateRules = {
+      validateRules: params.validateRules
+    };
+    var r = Object.assign(field, validateRules);
+    var createControl = field.createControl;
+
+    field.createControl = function () {
+      var ctrl = createControl.apply(this, []);
+      if (params.inputTips) ctrl.element.placeholder = params.inputTips;
+      ctrl.element.className = "form-control";
+      return ctrl;
+    };
+
+    return r;
   }
 
   exports.boundField = boundField;

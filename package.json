@@ -34,10 +34,11 @@
     "dependencies": {
         "@types/react": "^16.9.2",
         "@types/react-dom": "^16.9.0",
+        "bootstrap-datepicker": "git+https://github.com/ansiboy/bootstrap-datepicker.git",
         "maishu-chitu-service": "^1.8.5",
         "maishu-dilu": "^1.4.3",
         "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "^1.7.1"
+        "maishu-wuzhui": "file:../wuzhui"
     },
     "description": "",
     "devDependencies": {
@@ -63,5 +64,5 @@
         "build": "grunt build"
     },
     "types": "./out/index.d.ts",
-    "version": "1.8.3"
+    "version": "1.8.5"
 }
