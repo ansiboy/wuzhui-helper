@@ -1,22 +1,63 @@
-import { customDataField } from "./custom-data";
-import { CustomField } from "maishu-wuzhui";
+import { BoundField, GridViewDataCell, BoundFieldParams } from "maishu-wuzhui";
+import { FieldValidate } from "../wrapper";
 
-export function dateTimeField<T>(args: { dataField: Extract<keyof T, string>, headerText: string, }): CustomField<T> {
+export function dateTimeField<T>(args: BoundFieldParams<T> & FieldValidate): BoundField<T> & FieldValidate {
 
-    return customDataField<T>({
-        headerText: args.headerText,
-        headerStyle: { textAlign: 'center', width: '160px' } as CSSStyleDeclaration,
-        itemStyle: { textAlign: 'center', width: `160px` } as CSSStyleDeclaration,
-        render: (dataItem) => {
-            let value = dataItem[args.dataField] as any;
-            // if (typeof value == 'number')
-            return toDateTimeString(value)
+    let field = new DateTimeField<T>(args);
+    let validateRules: FieldValidate = {
+        validateRules: args.validateRules
+    }
+    let r = Object.assign(field, validateRules);
+    return r
+}
+
+class DateTimeField<T> extends BoundField<T> {
+    private inputTips: string;
+    constructor(args: BoundFieldParams<T> & FieldValidate) {//dataField: Extract<keyof T, string>, headerText: string
+        super(Object.assign({
+            headerStyle: { textAlign: 'center', width: '160px' },
+            itemStyle: { textAlign: 'center', width: `160px` }
+        }, args))
+
+        this.inputTips = args.inputTips;
+    }
+    createControl() {
+        let ctrl = super.createControl();
+        let VALUE: keyof typeof ctrl = "value";
+        Object.defineProperty(ctrl, VALUE, {
+            get() {
+                let str = (ctrl.element as HTMLInputElement).value;
+                let value: Date;
+                try {
+                    value = new Date(Date.parse(str));
+                }
+                catch (err) {
+
+                }
+                return value;
+            },
+            set(value: Date) {
+                let str = toDateTimeString(value);
+                (ctrl.element as HTMLInputElement).value = str;
+            }
+        });
+
+        if (this.inputTips)
+            (<HTMLInputElement>ctrl.element).placeholder = this.inputTips;
+
+        return ctrl;
+    }
+    createItemCell(dataItem: T) {
+        let cell = super.createItemCell(dataItem) as GridViewDataCell<T>;
+        cell.formatValue = function (value: any) {
+            return toDateTimeString(value);
         }
-    })
+        return cell;
+    }
 }
 
 
-export function toDateTimeString(datetime: number | Date) {
+export function toDateTimeString(datetime: number | Date | string) {
     if (datetime == null)
         return null;
 

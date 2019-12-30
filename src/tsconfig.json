@@ -22,6 +22,7 @@
             "csstype": [
                 "node_modules/csstype/index.d.ts"
             ]
-        }
+        },
+        "strictBindCallApply": true
     }
 }
