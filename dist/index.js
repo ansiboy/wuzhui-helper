@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.8.5
+ * WUZHUI-HELPER v1.9.0
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -266,6 +266,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             });
             if (this.inputTips)
                 ctrl.element.placeholder = this.inputTips;
+            ctrl.element.className = "form-control";
             return ctrl;
         }
         createItemCell(dataItem) {

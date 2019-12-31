@@ -87,6 +87,7 @@ define(["require", "exports", "maishu-wuzhui"], function (require, exports, mais
           }
         });
         if (this.inputTips) ctrl.element.placeholder = this.inputTips;
+        ctrl.element.className = "form-control";
         return ctrl;
       }
     }, {

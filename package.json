@@ -32,16 +32,16 @@
         "url": "https://github.com/ansiboy/wuzhui-helper/issues"
     },
     "dependencies": {
-        "@types/react": "^16.9.2",
-        "@types/react-dom": "^16.9.0",
         "bootstrap-datepicker": "git+https://github.com/ansiboy/bootstrap-datepicker.git",
         "maishu-chitu-service": "^1.8.5",
         "maishu-dilu": "^1.4.3",
         "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "file:../wuzhui"
+        "maishu-wuzhui": "^1.8.0"
     },
     "description": "",
     "devDependencies": {
+        "@types/react": "^16.9.2",
+        "@types/react-dom": "^16.9.0",
         "@babel/core": "^7.4.4",
         "@babel/preset-env": "^7.4.4",
         "grunt": "^1.0.1",
@@ -64,5 +64,5 @@
         "build": "grunt build"
     },
     "types": "./out/index.d.ts",
-    "version": "1.8.5"
+    "version": "1.9.0"
 }

@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.8.5
+ * WUZHUI-HELPER v1.9.0
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -410,6 +410,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
           }
         });
         if (this.inputTips) ctrl.element.placeholder = this.inputTips;
+        ctrl.element.className = "form-control";
         return ctrl;
       }
     }, {
