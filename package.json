@@ -1,35 +1,10 @@
 {
-    "_args": [
-        [
-            "maishu-wuzhui-helper@1.6.0",
-            "d:\\projects\\shop-auth\\node-auth-client"
-        ]
-    ],
-    "_from": "maishu-wuzhui-helper@1.6.0",
-    "_id": "maishu-wuzhui-helper@1.6.0",
-    "_inBundle": false,
-    "_integrity": "sha512-ikbi4Hbz0W9TjiPAMn4Q0lSuvd69tHeiAAejPrQUWkIb/e78S7qx1QYmfzt22d3xK+3bMOeLInPJGZQt3Ghy5A==",
-    "_location": "/maishu-wuzhui-helper",
-    "_phantomChildren": {},
-    "_requested": {
-        "type": "version",
-        "registry": true,
-        "raw": "maishu-wuzhui-helper@1.6.0",
-        "name": "maishu-wuzhui-helper",
-        "escapedName": "maishu-wuzhui-helper",
-        "rawSpec": "1.6.0",
-        "saveSpec": null,
-        "fetchSpec": "1.6.0"
-    },
-    "_requiredBy": [
-        "/"
-    ],
-    "_resolved": "https://registry.npmjs.org/maishu-wuzhui-helper/-/maishu-wuzhui-helper-1.6.0.tgz",
-    "_spec": "1.6.0",
-    "_where": "d:\\projects\\shop-auth\\node-auth-client",
-    "author": "",
-    "bugs": {
-        "url": "https://github.com/ansiboy/wuzhui-helper/issues"
+    "name": "maishu-wuzhui-helper",
+    "version": "1.12.0",
+    "main": "./dist/index.js",
+    "types": "./out/index.d.ts",
+    "scripts": {
+        "build": "grunt build"
     },
     "dependencies": {
         "bootstrap-datepicker": "^1.9.0",
@@ -38,7 +13,6 @@
         "maishu-ui-toolkit": "^1.2.2",
         "maishu-wuzhui": "^1.8.0"
     },
-    "description": "",
     "devDependencies": {
         "@types/react": "^16.9.2",
         "@types/react-dom": "^16.9.0",
@@ -54,15 +28,8 @@
     },
     "homepage": "https://github.com/ansiboy/wuzhui-helper#readme",
     "license": "MIT",
-    "main": "./dist/index.js",
-    "name": "maishu-wuzhui-helper",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ansiboy/wuzhui-helper.git"
-    },
-    "scripts": {
-        "build": "grunt build"
-    },
-    "types": "./out/index.d.ts",
-    "version": "1.11.0"
+    }
 }
