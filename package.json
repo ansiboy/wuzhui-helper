@@ -1,6 +1,6 @@
 {
     "name": "maishu-wuzhui-helper",
-    "version": "1.12.0",
+    "version": "1.15.0",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
     "scripts": {
@@ -8,10 +8,10 @@
     },
     "dependencies": {
         "bootstrap-datepicker": "^1.9.0",
-        "maishu-chitu-service": "^1.8.5",
-        "maishu-dilu": "^1.4.3",
-        "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "^1.8.0"
+        "maishu-chitu-service": "file:../chitu-service",
+        "maishu-dilu": "file:../dilu",
+        "maishu-ui-toolkit": "file:../ui-toolkit",
+        "maishu-wuzhui": "file:../wuzhui"
     },
     "devDependencies": {
         "@types/react": "^16.9.2",
