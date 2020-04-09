@@ -60,7 +60,7 @@ define(["require", "exports", "maishu-wuzhui"], function (require, exports, mais
           width: "160px"
         }
       }, args)));
-      _this.inputTips = args.inputTips;
+      _this.emptyText = args.emptyText;
       return _this;
     }
 
@@ -86,7 +86,7 @@ define(["require", "exports", "maishu-wuzhui"], function (require, exports, mais
             ctrl.element.value = str;
           }
         });
-        if (this.inputTips) ctrl.element.placeholder = this.inputTips;
+        if (this.emptyText) ctrl.element.placeholder = this.emptyText;
         ctrl.element.className = "form-control";
         return ctrl;
       }

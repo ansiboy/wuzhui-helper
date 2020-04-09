@@ -5,7 +5,7 @@ import { Rule } from "maishu-dilu";
 
 export interface FieldValidate {
     validateRules?: Rule[],
-    inputTips?: string,
+    emptyText?: string,
 }
 
 export function createGridView<T>(params: w.GridViewArguments<T> & { headerFixed?: boolean }) {
@@ -47,8 +47,8 @@ export function boundField<T>(params: w.BoundFieldParams<T> & FieldValidate): w.
     let createControl = field.createControl;
     field.createControl = function () {
         let ctrl = createControl.apply(this, []);
-        if (params.inputTips)
-            (<HTMLInputElement>ctrl.element).placeholder = params.inputTips;
+        if (params.emptyText)
+            (<HTMLInputElement>ctrl.element).placeholder = params.emptyText;
 
         (<HTMLInputElement>ctrl.element).className = "form-control";
         return ctrl;

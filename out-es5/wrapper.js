@@ -47,7 +47,7 @@ define(["require", "exports", "maishu-wuzhui", "./errors", "./textbox"], functio
 
     field.createControl = function () {
       var ctrl = createControl.apply(this, []);
-      if (params.inputTips) ctrl.element.placeholder = params.inputTips;
+      if (params.emptyText) ctrl.element.placeholder = params.emptyText;
       ctrl.element.className = "form-control";
       return ctrl;
     };

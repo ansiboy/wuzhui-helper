@@ -1,6 +1,6 @@
 "use strict";
 
-define(["require", "exports", "./wrapper", "./checkbox-list", "./radio-list", "maishu-wuzhui", "./fields/index"], function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1) {
+define(["require", "exports", "./wrapper", "./checkbox-list", "./radio-list", "maishu-wuzhui", "./fields/index", "./fields/dropdown"], function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1, dropdown_1) {
   "use strict";
 
   function __export(m) {
@@ -22,5 +22,7 @@ define(["require", "exports", "./wrapper", "./checkbox-list", "./radio-list", "m
   __export(maishu_wuzhui_1);
 
   __export(index_1);
+
+  exports.dropdownField = dropdown_1.dropdownField;
 });
 //# sourceMappingURL=index.js.map

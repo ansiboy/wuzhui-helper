@@ -243,7 +243,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 headerStyle: { textAlign: 'center', width: '160px' },
                 itemStyle: { textAlign: 'center', width: `160px` }
             }, args));
-            this.inputTips = args.inputTips;
+            this.emptyText = args.emptyText;
         }
         createControl() {
             let ctrl = super.createControl();
@@ -264,8 +264,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                     ctrl.element.value = str;
                 }
             });
-            if (this.inputTips)
-                ctrl.element.placeholder = this.inputTips;
+            if (this.emptyText)
+                ctrl.element.placeholder = this.emptyText;
             ctrl.element.className = "form-control";
             return ctrl;
         }
@@ -305,6 +305,89 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./out/fields/dropdown.js":
+/*!********************************!*\
+  !*** ./out/fields/dropdown.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    const emptyValue = "";
+    function dropdownField(params) {
+        let field = new DropdownField(params);
+        return field;
+    }
+    exports.dropdownField = dropdownField;
+    class DropdownField extends w.BoundField {
+        constructor(params) {
+            super(params);
+            super.params;
+            params.dataSource.select().then(r => {
+            });
+        }
+        getParams() {
+            return this.params;
+        }
+        getDataItems() {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (!this.dataItems) {
+                    let r = yield this.getParams().dataSource.select();
+                    this.dataItems = r.dataItems;
+                }
+                return this.dataItems;
+            });
+        }
+        createControl() {
+            let element = document.createElement("select");
+            element.className = "form-control";
+            if (this.getParams().emptyText) {
+                let o = document.createElement("option");
+                o.innerText = this.getParams().emptyText;
+                o.value = emptyValue;
+                element.append(o);
+            }
+            this.getDataItems().then(dataItems => {
+                let options = dataItems.map(dataItem => {
+                    let o = document.createElement("option");
+                    o.innerText = dataItem[this.getParams().nameField];
+                    o.value = dataItem[this.getParams().valueField];
+                    return o;
+                });
+                element.append(...options);
+            });
+            return {
+                element,
+                get value() {
+                    return element.value;
+                },
+                set value(value) {
+                    if (value == null) {
+                        element.value = emptyValue;
+                        return;
+                    }
+                    element.value = value;
+                }
+            };
+        }
+    }
+}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+
 /***/ "./out/fields/index.js":
 /*!*****************************!*\
   !*** ./out/fields/index.js ***!
@@ -330,7 +413,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out/radio-list.js"), __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./fields/index */ "./out/fields/index.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1) {
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out/radio-list.js"), __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./fields/index */ "./out/fields/index.js"), __webpack_require__(/*! ./fields/dropdown */ "./out/fields/dropdown.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1, dropdown_1) {
     "use strict";
     function __export(m) {
         for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -341,6 +424,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     __export(radio_list_1);
     __export(maishu_wuzhui_1);
     __export(index_1);
+    exports.dropdownField = dropdown_1.dropdownField;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -508,8 +592,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         let createControl = field.createControl;
         field.createControl = function () {
             let ctrl = createControl.apply(this, []);
-            if (params.inputTips)
-                ctrl.element.placeholder = params.inputTips;
+            if (params.emptyText)
+                ctrl.element.placeholder = params.emptyText;
             ctrl.element.className = "form-control";
             return ctrl;
         };

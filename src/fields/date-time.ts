@@ -12,14 +12,14 @@ export function dateTimeField<T>(args: BoundFieldParams<T> & FieldValidate): Bou
 }
 
 class DateTimeField<T> extends BoundField<T> {
-    private inputTips: string;
+    private emptyText: string;
     constructor(args: BoundFieldParams<T> & FieldValidate) {//dataField: Extract<keyof T, string>, headerText: string
         super(Object.assign({
             headerStyle: { textAlign: 'center', width: '160px' },
             itemStyle: { textAlign: 'center', width: `160px` }
         }, args))
 
-        this.inputTips = args.inputTips;
+        this.emptyText = args.emptyText;
     }
     createControl() {
         let ctrl = super.createControl();
@@ -42,8 +42,8 @@ class DateTimeField<T> extends BoundField<T> {
             }
         });
 
-        if (this.inputTips)
-            (<HTMLInputElement>ctrl.element).placeholder = this.inputTips;
+        if (this.emptyText)
+            (<HTMLInputElement>ctrl.element).placeholder = this.emptyText;
 
         (<HTMLInputElement>ctrl.element).className = "form-control";
         return ctrl;

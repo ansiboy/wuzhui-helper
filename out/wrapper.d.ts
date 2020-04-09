@@ -3,7 +3,7 @@ import { TextBox } from './textbox';
 import { Rule } from "maishu-dilu";
 export interface FieldValidate {
     validateRules?: Rule[];
-    inputTips?: string;
+    emptyText?: string;
 }
 export declare function createGridView<T>(params: w.GridViewArguments<T> & {
     headerFixed?: boolean;
