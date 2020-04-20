@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const custom_data_1 = require("./custom-data");
@@ -10,6 +11,65 @@ function dateTimeField(args) {
             let value = dataItem[args.dataField];
             // if (typeof value == 'number')
             return toDateTimeString(value);
+=======
+define(["require", "exports", "maishu-wuzhui"], function (require, exports, maishu_wuzhui_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function dateTimeField(args) {
+        let field = new DateTimeField(args);
+        let validateRules = {
+            validateRules: args.validateRules
+        };
+        let r = Object.assign(field, validateRules);
+        return r;
+    }
+    exports.dateTimeField = dateTimeField;
+    class DateTimeField extends maishu_wuzhui_1.BoundField {
+        constructor(args) {
+            super(Object.assign({
+                headerStyle: { textAlign: 'center', width: '160px' },
+                itemStyle: { textAlign: 'center', width: `160px` }
+            }, args));
+            this.emptyText = args.emptyText;
+        }
+        createControl() {
+            let ctrl = super.createControl();
+            let VALUE = "value";
+            Object.defineProperty(ctrl, VALUE, {
+                get() {
+                    let str = ctrl.element.value;
+                    let value;
+                    try {
+                        value = new Date(Date.parse(str));
+                    }
+                    catch (err) {
+                    }
+                    return value;
+                },
+                set(value) {
+                    let str = toDateTimeString(value);
+                    ctrl.element.value = str;
+                }
+            });
+            if (this.emptyText)
+                ctrl.element.placeholder = this.emptyText;
+            ctrl.element.className = "form-control";
+            return ctrl;
+        }
+        createItemCell(dataItem) {
+            let cell = super.createItemCell(dataItem);
+            cell.formatValue = function (value) {
+                return toDateTimeString(value);
+            };
+            return cell;
+        }
+    }
+    function toDateTimeString(datetime) {
+        if (datetime == null)
+            return null;
+        if (typeof datetime == "string") {
+            datetime = new Date(datetime);
+>>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
         }
     });
 }

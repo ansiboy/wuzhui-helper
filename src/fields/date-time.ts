@@ -1,47 +1,89 @@
-import { customDataField } from "./custom-data";
-import { CustomField } from "maishu-wuzhui";
+import { BoundField, GridViewDataCell, BoundFieldParams } from "maishu-wuzhui";
+import { FieldValidate } from "../wrapper";
 
-export function dateTimeField<T>(args: { dataField: Extract<keyof T, string>, headerText: string, }): CustomField<T> {
+export function dateTimeField<T>(args: BoundFieldParams<T> & FieldValidate): BoundField<T> & FieldValidate {
 
-    return customDataField<T>({
-        headerText: args.headerText,
-        headerStyle: { textAlign: 'center', width: '160px' } as CSSStyleDeclaration,
-        itemStyle: { textAlign: 'center', width: `160px` } as CSSStyleDeclaration,
-        render: (dataItem) => {
-            let value = dataItem[args.dataField] as any;
-            // if (typeof value == 'number')
-            return toDateTimeString(value)
+    let field = new DateTimeField<T>(args);
+    let validateRules: FieldValidate = {
+        validateRules: args.validateRules
+    }
+    let r = Object.assign(field, validateRules);
+    return r
+}
+
+class DateTimeField<T> extends BoundField<T> {
+    private emptyText: string;
+    constructor(args: BoundFieldParams<T> & FieldValidate) {//dataField: Extract<keyof T, string>, headerText: string
+        super(Object.assign({
+            headerStyle: { textAlign: 'center', width: '160px' },
+            itemStyle: { textAlign: 'center', width: `160px` }
+        }, args))
+
+        this.emptyText = args.emptyText;
+    }
+    createControl() {
+        let ctrl = super.createControl();
+        let VALUE: keyof typeof ctrl = "value";
+        Object.defineProperty(ctrl, VALUE, {
+            get() {
+                let str = (ctrl.element as HTMLInputElement).value;
+                let value: Date;
+                try {
+                    value = new Date(Date.parse(str));
+                }
+                catch (err) {
+
+                }
+                return value;
+            },
+            set(value: Date) {
+                let str = toDateTimeString(value);
+                (ctrl.element as HTMLInputElement).value = str;
+            }
+        });
+
+        if (this.emptyText)
+            (<HTMLInputElement>ctrl.element).placeholder = this.emptyText;
+
+        (<HTMLInputElement>ctrl.element).className = "form-control";
+        return ctrl;
+    }
+    createItemCell(dataItem: T) {
+        let cell = super.createItemCell(dataItem) as GridViewDataCell<T>;
+        cell.formatValue = function (value: any) {
+            return toDateTimeString(value);
         }
-    })
+        return cell;
+    }
 }
 
 
-export function toDateTimeString(datetime: number | Date) {
+export function toDateTimeString(datetime: number | Date | string) {
     if (datetime == null)
-        return null
+        return null;
 
-    if (typeof datetime == "string"){
+    if (typeof datetime == "string") {
         datetime = new Date(datetime);
     }
-       
 
-    let d: Date
+
+    let d: Date;
     if (typeof datetime == 'number')
-        d = new Date(datetime)
+        d = new Date(datetime);
     else
-        d = datetime
+        d = datetime;
 
     let month = `${d.getMonth() + 1}`
-    month = month.length == 1 ? '0' + month : month
+    month = month.length == 1 ? '0' + month : month;
 
-    let date = `${d.getDate()}`
-    date = date.length == 1 ? '0' + date : date
+    let date = `${d.getDate()}`;
+    date = date.length == 1 ? '0' + date : date;
 
-    let hours = `${d.getHours()}`
-    hours = hours.length == 1 ? '0' + hours : hours
+    let hours = `${d.getHours()}`;
+    hours = hours.length == 1 ? '0' + hours : hours;
 
-    let minutes = `${d.getMinutes()}`
-    minutes = minutes.length == 1 ? '0' + minutes : minutes
+    let minutes = `${d.getMinutes()}`;
+    minutes = minutes.length == 1 ? '0' + minutes : minutes;
 
     return `${d.getFullYear()}-${month}-${date} ${hours}:${minutes}`
 }
