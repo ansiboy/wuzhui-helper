@@ -1,11 +1,11 @@
 /*!
- * WUZHUI-HELPER v1.8.1
+ * WUZHUI-HELPER v1.8.6
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
  * Licensed under the MIT License.
  */
-define(["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__) { return /******/ (function(modules) { // webpackBootstrap
+define("wuzhui_helper", ["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__) { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -101,7 +101,7 @@ define(["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_maishu_wuzhui__) { 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
 
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
@@ -135,101 +135,98 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
   });
 };
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
-  "use strict";
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
 
-  function checkboxList(params) {
-    return __awaiter(this, void 0, void 0,
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee() {
-      var dataSource, element, nameField, valueField, dataField, dataItem, r, elementDataItems;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              if (params) {
-                _context.next = 2;
-                break;
+function checkboxList(params) {
+  return __awaiter(this, void 0, void 0,
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee() {
+    var dataSource, element, nameField, valueField, dataField, dataItem, r, elementDataItems;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (params) {
+              _context.next = 2;
+              break;
+            }
+
+            throw errors_1.errors.argumentNull('params');
+
+          case 2:
+            if (params.element) {
+              _context.next = 4;
+              break;
+            }
+
+            throw errors_1.errors.argumentFieldNull('params', 'element');
+
+          case 4:
+            if (params.dataSource) {
+              _context.next = 6;
+              break;
+            }
+
+            throw errors_1.errors.argumentFieldNull('params', 'dataSource');
+
+          case 6:
+            dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField, dataField = params.dataField, dataItem = params.dataItem;
+            _context.next = 9;
+            return dataSource.select({});
+
+          case 9:
+            r = _context.sent;
+            elementDataItems = [];
+            r.dataItems.map(function (o) {
+              var label = document.createElement('label');
+              var input = document.createElement('input');
+              input.type = "checkbox";
+              var span = document.createElement('span');
+              label.appendChild(input);
+              label.appendChild(span);
+              var name = nameField ? o[nameField] : o;
+              var value = valueField ? o[valueField] : o;
+              input.value = "".concat(value);
+              span.innerHTML = "".concat(name);
+
+              if (dataItem[dataField] && !Array.isArray(dataItem[dataField])) {
+                throw errors_1.errors.dataFieldValueNotArray(dataField);
               }
 
-              throw errors_1.errors.argumentNull('params');
-
-            case 2:
-              if (params.element) {
-                _context.next = 4;
-                break;
+              if (value == dataItem[dataField]) {
+                input.checked = true;
               }
 
-              throw errors_1.errors.argumentFieldNull('params', 'element');
-
-            case 4:
-              if (params.dataSource) {
-                _context.next = 6;
-                break;
-              }
-
-              throw errors_1.errors.argumentFieldNull('params', 'dataSource');
-
-            case 6:
-              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField, dataField = params.dataField, dataItem = params.dataItem;
-              _context.next = 9;
-              return dataSource.select({});
-
-            case 9:
-              r = _context.sent;
-              elementDataItems = [];
-              r.dataItems.map(function (o) {
-                var label = document.createElement('label');
-                var input = document.createElement('input');
-                input.type = "checkbox";
-                var span = document.createElement('span');
-                label.appendChild(input);
-                label.appendChild(span);
-                var name = nameField ? o[nameField] : o;
-                var value = valueField ? o[valueField] : o;
-                input.value = "".concat(value);
-                span.innerHTML = "".concat(name);
-
-                if (dataItem[dataField] && !Array.isArray(dataItem[dataField])) {
-                  throw errors_1.errors.dataFieldValueNotArray(dataField);
-                }
-
-                if (value == dataItem[dataField]) {
-                  input.checked = true;
-                }
-
-                elementDataItems.push({
-                  element: input,
-                  dataItem: o
-                });
-
-                input.onchange = function (e) {
-                  dataItem[dataField] = elementDataItems.filter(function (o) {
-                    return o.element.checked;
-                  }).map(function (o) {
-                    return o.dataItem[valueField];
-                  });
-                };
-
-                element.appendChild(label);
+              elementDataItems.push({
+                element: input,
+                dataItem: o
               });
 
-            case 12:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-  }
+              input.onchange = function (e) {
+                dataItem[dataField] = elementDataItems.filter(function (o) {
+                  return o.element.checked;
+                }).map(function (o) {
+                  return o.dataItem[valueField];
+                });
+              };
 
-  exports.checkboxList = checkboxList;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+              element.appendChild(label);
+            });
+
+          case 12:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+}
+
+exports.checkboxList = checkboxList;
 //# sourceMappingURL=checkbox-list.js.map
 
 
@@ -243,29 +240,24 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports) {
-  "use strict";
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.errors = {
-    argumentNull: function argumentNull(paramName) {
-      return new Error("Argument '" + paramName + "' can not be null.");
-    },
-    argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {
-      var msg = "Argument ".concat(argumentName, " ").concat(fieldName, " field can not be null or empty.");
-      return new Error(msg);
-    },
-    dataFieldValueNotArray: function dataFieldValueNotArray(dataField) {
-      var msg = "Type of dataitem ".concat(dataField, " field is not array.");
-      return new Error(msg);
-    }
-  };
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.errors = {
+  argumentNull: function argumentNull(paramName) {
+    return new Error("Argument '" + paramName + "' can not be null.");
+  },
+  argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {
+    var msg = "Argument ".concat(argumentName, " ").concat(fieldName, " field can not be null or empty.");
+    return new Error(msg);
+  },
+  dataFieldValueNotArray: function dataFieldValueNotArray(dataField) {
+    var msg = "Type of dataitem ".concat(dataField, " field is not array.");
+    return new Error(msg);
+  }
+};
 //# sourceMappingURL=errors.js.map
 
 
@@ -279,35 +271,32 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, maishu_wuzhui_1) {
-  "use strict";
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var maishu_wuzhui_1 = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
+
+function customDataField(params) {
+  return new maishu_wuzhui_1.CustomField({
+    headerText: params.headerText,
+    headerStyle: params.headerStyle,
+    itemStyle: params.itemStyle,
+    createItemCell: function createItemCell() {
+      var cell = new maishu_wuzhui_1.GridViewDataCell({
+        render: function render(dataItem, element) {
+          var r = params.render(dataItem, element);
+          if (r) element.innerHTML = r;
+        }
+      });
+      return cell;
+    }
   });
+}
 
-  function customDataField(params) {
-    return new maishu_wuzhui_1.CustomField({
-      headerText: params.headerText,
-      headerStyle: params.headerStyle,
-      itemStyle: params.itemStyle,
-      createItemCell: function createItemCell() {
-        var cell = new maishu_wuzhui_1.GridViewDataCell({
-          render: function render(dataItem, element) {
-            var r = params.render(dataItem, element);
-            if (r) element.innerHTML = r;
-          }
-        });
-        return cell;
-      }
-    });
-  }
-
-  exports.customDataField = customDataField;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+exports.customDataField = customDataField;
 //# sourceMappingURL=custom-data.js.map
 
 
@@ -321,59 +310,56 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, custom_data_1) {
-  "use strict";
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  function dateTimeField(args) {
-    return custom_data_1.customDataField({
-      headerText: args.headerText,
-      headerStyle: {
-        textAlign: 'center',
-        width: '160px'
-      },
-      itemStyle: {
-        textAlign: 'center',
-        width: "160px"
-      },
-      render: function render(dataItem) {
-        var value = dataItem[args.dataField]; // if (typeof value == 'number')
+var custom_data_1 = __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js");
 
-        return toDateTimeString(value);
-      }
-    });
-  }
+function dateTimeField(args) {
+  return custom_data_1.customDataField({
+    headerText: args.headerText,
+    headerStyle: {
+      textAlign: 'center',
+      width: '160px'
+    },
+    itemStyle: {
+      textAlign: 'center',
+      width: "160px"
+    },
+    render: function render(dataItem) {
+      var value = dataItem[args.dataField]; // if (typeof value == 'number')
 
-  exports.dateTimeField = dateTimeField;
-
-  function toDateTimeString(datetime) {
-    if (datetime == null) return null;
-
-    if (typeof datetime == "string") {
-      datetime = new Date(datetime);
+      return toDateTimeString(value);
     }
+  });
+}
 
-    var d;
-    if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
-    var month = "".concat(d.getMonth() + 1);
-    month = month.length == 1 ? '0' + month : month;
-    var date = "".concat(d.getDate());
-    date = date.length == 1 ? '0' + date : date;
-    var hours = "".concat(d.getHours());
-    hours = hours.length == 1 ? '0' + hours : hours;
-    var minutes = "".concat(d.getMinutes());
-    minutes = minutes.length == 1 ? '0' + minutes : minutes;
-    return "".concat(d.getFullYear(), "-").concat(month, "-").concat(date, " ").concat(hours, ":").concat(minutes);
+exports.dateTimeField = dateTimeField;
+
+function toDateTimeString(datetime) {
+  if (datetime == null) return null;
+
+  if (typeof datetime == "string") {
+    datetime = new Date(datetime);
   }
 
-  exports.toDateTimeString = toDateTimeString;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  var d;
+  if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
+  var month = "".concat(d.getMonth() + 1);
+  month = month.length == 1 ? '0' + month : month;
+  var date = "".concat(d.getDate());
+  date = date.length == 1 ? '0' + date : date;
+  var hours = "".concat(d.getHours());
+  hours = hours.length == 1 ? '0' + hours : hours;
+  var minutes = "".concat(d.getMinutes());
+  minutes = minutes.length == 1 ? '0' + minutes : minutes;
+  return "".concat(d.getFullYear(), "-").concat(month, "-").concat(date, " ").concat(hours, ":").concat(minutes);
+}
+
+exports.toDateTimeString = toDateTimeString;
 //# sourceMappingURL=date-time.js.map
 
 
@@ -387,18 +373,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./date-time */ "./out-es5/fields/date-time.js"), __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, date_time_1, custom_data_1) {
-  "use strict";
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.dateTimeField = date_time_1.dateTimeField;
-  exports.customDataField = custom_data_1.customDataField;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var date_time_1 = __webpack_require__(/*! ./date-time */ "./out-es5/fields/date-time.js");
+
+exports.dateTimeField = date_time_1.dateTimeField;
+
+var custom_data_1 = __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js");
+
+exports.customDataField = custom_data_1.customDataField;
 //# sourceMappingURL=index.js.map
 
 
@@ -412,32 +399,27 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js"), __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./fields/index */ "./out-es5/fields/index.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1) {
-  "use strict";
 
-  function __export(m) {
-    for (var p in m) {
-      if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-    }
+function __export(m) {
+  for (var p in m) {
+    if (!exports.hasOwnProperty(p)) exports[p] = m[p];
   }
+}
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  __export(wrapper_1);
+__export(__webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"));
 
-  __export(checkbox_list_1);
+__export(__webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"));
 
-  __export(radio_list_1);
+__export(__webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js"));
 
-  __export(maishu_wuzhui_1);
+__export(__webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"));
 
-  __export(index_1);
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+__export(__webpack_require__(/*! ./fields/index */ "./out-es5/fields/index.js"));
 //# sourceMappingURL=index.js.map
 
 
@@ -451,7 +433,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
 
 var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
@@ -485,102 +467,99 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
   });
 };
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
-  "use strict";
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
 
-  function radioList(params) {
-    return __awaiter(this, void 0, void 0,
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee() {
-      var dataSource, element, nameField, valueField, dataField, r, getDataSourceItemName, getDataSourceItemValue;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              getDataSourceItemValue = function _ref2(item) {
-                if (!valueField) return item;
-                return item[valueField];
+function radioList(params) {
+  return __awaiter(this, void 0, void 0,
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee() {
+    var dataSource, element, nameField, valueField, dataField, r, getDataSourceItemName, getDataSourceItemValue;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            getDataSourceItemValue = function _ref2(item) {
+              if (!valueField) return item;
+              return item[valueField];
+            };
+
+            getDataSourceItemName = function _ref(item) {
+              if (!nameField) return item;
+              return item[nameField];
+            };
+
+            if (params) {
+              _context.next = 4;
+              break;
+            }
+
+            throw errors_1.errors.argumentNull('params');
+
+          case 4:
+            if (params.element) {
+              _context.next = 6;
+              break;
+            }
+
+            throw errors_1.errors.argumentFieldNull('params', 'element');
+
+          case 6:
+            if (params.dataSource) {
+              _context.next = 8;
+              break;
+            }
+
+            throw errors_1.errors.argumentFieldNull('params', 'dataSource');
+
+          case 8:
+            dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField, dataField = params.dataField;
+            _context.next = 11;
+            return dataSource.select({});
+
+          case 11:
+            r = _context.sent;
+            element.innerHTML = "";
+            r.dataItems.map(function (o) {
+              var label = document.createElement('label');
+              label.className = "radio-inline";
+              var controlElement = document.createElement('input');
+              controlElement.type = "radio";
+              controlElement.name = dataField;
+              var nameElement = document.createElement('span');
+              label.appendChild(controlElement);
+              label.appendChild(nameElement);
+              var itemName = getDataSourceItemName(o);
+              var itemValue = getDataSourceItemValue(o);
+              controlElement.value = "".concat(itemValue);
+              nameElement.innerHTML = "".concat(itemName);
+
+              controlElement.onchange = function (e) {
+                params.dataItem[dataField] = itemValue;
               };
 
-              getDataSourceItemName = function _ref(item) {
-                if (!nameField) return item;
-                return item[nameField];
-              };
+              var value = params.dataItem[dataField] || params.defaultValue;
 
-              if (params) {
-                _context.next = 4;
-                break;
+              if (value == itemValue) {
+                controlElement.checked = true;
               }
 
-              throw errors_1.errors.argumentNull('params');
+              element.appendChild(label);
+            });
 
-            case 4:
-              if (params.element) {
-                _context.next = 6;
-                break;
-              }
-
-              throw errors_1.errors.argumentFieldNull('params', 'element');
-
-            case 6:
-              if (params.dataSource) {
-                _context.next = 8;
-                break;
-              }
-
-              throw errors_1.errors.argumentFieldNull('params', 'dataSource');
-
-            case 8:
-              dataSource = params.dataSource, element = params.element, nameField = params.nameField, valueField = params.valueField, dataField = params.dataField;
-              _context.next = 11;
-              return dataSource.select({});
-
-            case 11:
-              r = _context.sent;
-              element.innerHTML = "";
-              r.dataItems.map(function (o) {
-                var label = document.createElement('label');
-                label.className = "radio-inline";
-                var controlElement = document.createElement('input');
-                controlElement.type = "radio";
-                controlElement.name = dataField;
-                var nameElement = document.createElement('span');
-                label.appendChild(controlElement);
-                label.appendChild(nameElement);
-                var itemName = getDataSourceItemName(o);
-                var itemValue = getDataSourceItemValue(o);
-                controlElement.value = "".concat(itemValue);
-                nameElement.innerHTML = "".concat(itemName);
-
-                controlElement.onchange = function (e) {
-                  params.dataItem[dataField] = itemValue;
-                };
-
-                var value = params.dataItem[dataField] || params.defaultValue;
-
-                if (value == itemValue) {
-                  controlElement.checked = true;
-                }
-
-                element.appendChild(label);
-              });
-
-            case 14:
-            case "end":
-              return _context.stop();
-          }
+          case 14:
+          case "end":
+            return _context.stop();
         }
-      }, _callee);
-    }));
-  }
+      }
+    }, _callee);
+  }));
+}
 
-  exports.radioList = radioList;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+exports.radioList = radioList;
 //# sourceMappingURL=radio-list.js.map
 
 
@@ -594,46 +573,43 @@ var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./errors */ "./out-es5/errors.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, errors_1) {
-  "use strict";
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
 
-  var TextBox = function TextBox(params) {
-    _classCallCheck(this, TextBox);
+var TextBox = function TextBox(params) {
+  _classCallCheck(this, TextBox);
 
-    if (params == null) throw errors_1.errors.argumentNull("params");
-    if (!params.element) throw errors_1.errors.argumentFieldNull("params", "element");
-    if (!params.dataField) throw errors_1.errors.argumentFieldNull("params", "dataField");
-    if (!params.dataItem) throw errors_1.errors.argumentFieldNull("params", "dataItem");
-    if (!params.valueType) throw errors_1.errors.argumentFieldNull("params", "valuetype");
-    var element = params.element,
-        dataField = params.dataField,
-        dataItem = params.dataItem,
-        valueType = params.valueType;
-    var value = dataItem[dataField];
-    element.value = "".concat(value || "");
+  if (params == null) throw errors_1.errors.argumentNull("params");
+  if (!params.element) throw errors_1.errors.argumentFieldNull("params", "element");
+  if (!params.dataField) throw errors_1.errors.argumentFieldNull("params", "dataField");
+  if (!params.dataItem) throw errors_1.errors.argumentFieldNull("params", "dataItem");
+  if (!params.valueType) throw errors_1.errors.argumentFieldNull("params", "valuetype");
+  var element = params.element,
+      dataField = params.dataField,
+      dataItem = params.dataItem,
+      valueType = params.valueType;
+  var value = dataItem[dataField];
+  element.value = "".concat(value || "");
 
-    element.onchange = function () {
-      if (valueType == 'int') {
-        dataItem[dataField] = Number.parseInt(element.value);
-      } else if (valueType == 'float') {
-        dataItem[dataField] = Number.parseFloat(element.value);
-      } else {
-        dataItem[dataField] = element.value;
-      }
-    };
+  element.onchange = function () {
+    if (valueType == 'int') {
+      dataItem[dataField] = Number.parseInt(element.value);
+    } else if (valueType == 'float') {
+      dataItem[dataField] = Number.parseFloat(element.value);
+    } else {
+      dataItem[dataField] = element.value;
+    }
   };
+};
 
-  exports.TextBox = TextBox;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+exports.TextBox = TextBox;
 //# sourceMappingURL=textbox.js.map
 
 
@@ -647,82 +623,83 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./errors */ "./out-es5/errors.js"), __webpack_require__(/*! ./textbox */ "./out-es5/textbox.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w, errors_1, textbox_1) {
-  "use strict";
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-  function createGridView(params) {
-    params = Object.assign({
-      pageSize: 10,
-      dataSource: null,
-      columns: null
-    }, params);
+var w = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
 
-    if (params.pagerSettings == null) {
-      params.pagerSettings = {
-        activeButtonClassName: 'active',
-        buttonContainerWraper: 'ul',
-        buttonWrapper: 'li',
-        buttonContainerClassName: 'pagination',
-        showTotal: true
-      };
-    }
+var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
 
-    console.assert(params.element != null, 'element can not null.');
-    params.element.className = 'table table-striped table-bordered table-hover';
-    var gridView = new w.GridView(params);
-    return gridView;
+var textbox_1 = __webpack_require__(/*! ./textbox */ "./out-es5/textbox.js");
+
+function createGridView(params) {
+  params = Object.assign({
+    pageSize: 10,
+    dataSource: null,
+    columns: null
+  }, params);
+
+  if (params.pagerSettings == null) {
+    params.pagerSettings = {
+      activeButtonClassName: 'active',
+      buttonContainerWraper: 'ul',
+      buttonWrapper: 'li',
+      buttonContainerClassName: 'pagination',
+      showTotal: true
+    };
   }
 
-  exports.createGridView = createGridView;
+  console.assert(params.element != null, 'element can not null.');
+  params.element.className = 'table table-striped table-bordered table-hover';
+  var gridView = new w.GridView(params);
+  return gridView;
+}
 
-  function boundField(params) {
-    if (!params) throw errors_1.errors.argumentNull('params');
-    params.headerStyle = Object.assign({
-      textAlign: 'center'
-    }, params.headerStyle || {});
-    if (params.nullText == null) params.nullText = '';
-    return new w.BoundField(params);
-  }
+exports.createGridView = createGridView;
 
-  exports.boundField = boundField;
+function boundField(params) {
+  if (!params) throw errors_1.errors.argumentNull('params');
+  params.headerStyle = Object.assign({
+    textAlign: 'center'
+  }, params.headerStyle || {});
+  if (params.nullText == null) params.nullText = '';
+  return new w.BoundField(params);
+}
 
-  function commandField(params) {
-    if (!params) throw errors_1.errors.argumentNull('params');
-    return new w.CommandField(params);
-  }
+exports.boundField = boundField;
 
-  exports.commandField = commandField;
+function commandField(params) {
+  if (!params) throw errors_1.errors.argumentNull('params');
+  return new w.CommandField(params);
+}
 
-  function customField(params) {
-    if (!params) throw errors_1.errors.argumentNull('params');
-    params.headerStyle = Object.assign({
-      textAlign: 'center'
-    }, params.headerStyle || {});
-    var field = new w.CustomField(params);
-    return field;
-  }
+exports.commandField = commandField;
 
-  exports.customField = customField;
+function customField(params) {
+  if (!params) throw errors_1.errors.argumentNull('params');
+  params.headerStyle = Object.assign({
+    textAlign: 'center'
+  }, params.headerStyle || {});
+  var field = new w.CustomField(params);
+  return field;
+}
 
-  function dropdown(args) {
-    return new w.DropDown(args);
-  }
+exports.customField = customField;
 
-  exports.dropdown = dropdown;
+function dropdown(args) {
+  return new w.DropDown(args);
+}
 
-  function textbox(args) {
-    return new textbox_1.TextBox(args);
-  }
+exports.dropdown = dropdown;
 
-  exports.textbox = textbox;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+function textbox(args) {
+  return new textbox_1.TextBox(args);
+}
+
+exports.textbox = textbox;
 //# sourceMappingURL=wrapper.js.map
 
 

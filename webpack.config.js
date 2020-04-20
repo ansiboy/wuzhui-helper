@@ -14,7 +14,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
-        libraryTarget: 'amd'
+        libraryTarget: 'amd',
+        library: "wuzhui_helper",
     },
     mode: 'development', // production
     devtool: 'source-map',

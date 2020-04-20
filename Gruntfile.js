@@ -1,3 +1,18 @@
+function modifyVersion() {
+    const package = require("./package.json");
+
+    let version = package.version || "1.0.0";
+    let arr = version.split(".");
+    arr[arr.length - 1] = (Number.parseInt(arr[arr.length - 1]) + 1).toString();
+    version = arr.join(".");
+    package.version = version;
+
+    const fs = require('fs');
+    let data = JSON.stringify(package, null, 4);
+    fs.writeFileSync("package.json", data, "utf8");
+};
+modifyVersion();
+
 const webpackES6Config = require('./webpack.config.js');
 let webpackES5Config = Object.assign({}, webpackES6Config)
 webpackES5Config.entry = __dirname + "/out-es5/index.js"//已多次提及的唯一入口文件

@@ -2,26 +2,9 @@
     "compilerOptions": {
         "jsx": "react",
         "target": "es6",
-        "module": "amd",
+        "module": "CommonJS",
         "declaration": true,
         "baseUrl": "../",
-        "outDir": "../out",
-        "paths": {
-            "maishu-chitu-service": [
-                "node_modules/maishu-chitu-service/out/index.d.ts"
-            ],
-            "maishu-dilu": [
-                "node_modules/maishu-dilu/out/index.d.ts"
-            ],
-            "maishu-ui-toolkit": [
-                "node_modules/maishu-ui-toolkit/out/index.d.ts"
-            ],
-            "maishu-wuzhui": [
-                "node_modules/maishu-wuzhui/out/index.d.ts"
-            ],
-            "csstype": [
-                "node_modules/csstype/index.d.ts"
-            ]
-        }
+        "outDir": "../out"
     }
 }
