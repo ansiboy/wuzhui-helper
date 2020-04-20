@@ -1,10 +1,5 @@
 "use strict";
 
-<<<<<<< HEAD
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-=======
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27,117 +22,91 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-define(["require", "exports", "maishu-wuzhui"], function (require, exports, maishu_wuzhui_1) {
-  "use strict";
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var custom_data_1 = require("./custom-data");
+var maishu_wuzhui_1 = require("maishu-wuzhui");
 
 function dateTimeField(args) {
-  return custom_data_1.customDataField({
-    headerText: args.headerText,
-    headerStyle: {
-      textAlign: 'center',
-      width: '160px'
-    },
-    itemStyle: {
-      textAlign: 'center',
-      width: "160px"
-    },
-    render: function render(dataItem) {
-      var value = dataItem[args.dataField]; // if (typeof value == 'number')
-
-      return toDateTimeString(value);
-    }
-  });
+  var field = new DateTimeField(args);
+  var validateRules = {
+    validateRules: args.validateRules
+  };
+  var r = Object.assign(field, validateRules);
+  return r;
 }
 
-<<<<<<< HEAD
 exports.dateTimeField = dateTimeField;
+
+var DateTimeField =
+/*#__PURE__*/
+function (_maishu_wuzhui_1$Boun) {
+  _inherits(DateTimeField, _maishu_wuzhui_1$Boun);
+
+  function DateTimeField(args) {
+    var _this;
+
+    _classCallCheck(this, DateTimeField);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DateTimeField).call(this, Object.assign({
+      headerStyle: {
+        textAlign: 'center',
+        width: '160px'
+      },
+      itemStyle: {
+        textAlign: 'center',
+        width: "160px"
+      }
+    }, args)));
+    _this.emptyText = args.emptyText;
+    return _this;
+  }
+
+  _createClass(DateTimeField, [{
+    key: "createControl",
+    value: function createControl() {
+      var ctrl = _get(_getPrototypeOf(DateTimeField.prototype), "createControl", this).call(this);
+
+      var VALUE = "value";
+      Object.defineProperty(ctrl, VALUE, {
+        get: function get() {
+          var str = ctrl.element.value;
+          var value;
+
+          try {
+            value = new Date(Date.parse(str));
+          } catch (err) {}
+
+          return value;
+        },
+        set: function set(value) {
+          var str = toDateTimeString(value);
+          ctrl.element.value = str;
+        }
+      });
+      if (this.emptyText) ctrl.element.placeholder = this.emptyText;
+      ctrl.element.className = "form-control";
+      return ctrl;
+    }
+  }, {
+    key: "createItemCell",
+    value: function createItemCell(dataItem) {
+      var cell = _get(_getPrototypeOf(DateTimeField.prototype), "createItemCell", this).call(this, dataItem);
+
+      cell.formatValue = function (value) {
+        return toDateTimeString(value);
+      };
+
+      return cell;
+    }
+  }]);
+
+  return DateTimeField;
+}(maishu_wuzhui_1.BoundField);
 
 function toDateTimeString(datetime) {
   if (datetime == null) return null;
-=======
-  function dateTimeField(args) {
-    var field = new DateTimeField(args);
-    var validateRules = {
-      validateRules: args.validateRules
-    };
-    var r = Object.assign(field, validateRules);
-    return r;
-  }
-
-  exports.dateTimeField = dateTimeField;
-
-  var DateTimeField =
-  /*#__PURE__*/
-  function (_maishu_wuzhui_1$Boun) {
-    _inherits(DateTimeField, _maishu_wuzhui_1$Boun);
-
-    function DateTimeField(args) {
-      var _this;
-
-      _classCallCheck(this, DateTimeField);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(DateTimeField).call(this, Object.assign({
-        headerStyle: {
-          textAlign: 'center',
-          width: '160px'
-        },
-        itemStyle: {
-          textAlign: 'center',
-          width: "160px"
-        }
-      }, args)));
-      _this.emptyText = args.emptyText;
-      return _this;
-    }
-
-    _createClass(DateTimeField, [{
-      key: "createControl",
-      value: function createControl() {
-        var ctrl = _get(_getPrototypeOf(DateTimeField.prototype), "createControl", this).call(this);
-
-        var VALUE = "value";
-        Object.defineProperty(ctrl, VALUE, {
-          get: function get() {
-            var str = ctrl.element.value;
-            var value;
-
-            try {
-              value = new Date(Date.parse(str));
-            } catch (err) {}
-
-            return value;
-          },
-          set: function set(value) {
-            var str = toDateTimeString(value);
-            ctrl.element.value = str;
-          }
-        });
-        if (this.emptyText) ctrl.element.placeholder = this.emptyText;
-        ctrl.element.className = "form-control";
-        return ctrl;
-      }
-    }, {
-      key: "createItemCell",
-      value: function createItemCell(dataItem) {
-        var cell = _get(_getPrototypeOf(DateTimeField.prototype), "createItemCell", this).call(this, dataItem);
-
-        cell.formatValue = function (value) {
-          return toDateTimeString(value);
-        };
-
-        return cell;
-      }
-    }]);
-
-    return DateTimeField;
-  }(maishu_wuzhui_1.BoundField);
-
-  function toDateTimeString(datetime) {
-    if (datetime == null) return null;
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
 
   if (typeof datetime == "string") {
     datetime = new Date(datetime);

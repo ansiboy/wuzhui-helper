@@ -1,9 +1,11 @@
-import { errors } from "./errors";
+import * as w from 'maishu-wuzhui';
+import { errors } from '../errors';
 
 export type TextBoxParams<T> = {
     element: HTMLInputElement, dataField: keyof T, dataItem: T,
     valueType: 'string' | 'int' | 'float'
 }
+
 export class TextBox<T> {
     constructor(params: TextBoxParams<T>) {
         if (params == null) throw errors.argumentNull("params")
@@ -28,3 +30,7 @@ export class TextBox<T> {
         }
     }
 } 
+
+export function textbox<T>(args: w.TextBoxParams<T>) {
+    return new TextBox(args)
+}

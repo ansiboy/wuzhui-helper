@@ -6,34 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var w = require("maishu-wuzhui");
 
-<<<<<<< HEAD
 var errors_1 = require("./errors");
 
 var textbox_1 = require("./textbox");
-=======
-  function boundField(params) {
-    if (!params) throw errors_1.errors.argumentNull('params');
-    params.headerStyle = Object.assign({
-      textAlign: 'center'
-    }, params.headerStyle || {});
-    if (params.nullText == null) params.nullText = '';
-    var field = new w.BoundField(params);
-    var validateRules = {
-      validateRules: params.validateRules
-    };
-    var r = Object.assign(field, validateRules);
-    var createControl = field.createControl;
-
-    field.createControl = function () {
-      var ctrl = createControl.apply(this, []);
-      if (params.emptyText) ctrl.element.placeholder = params.emptyText;
-      ctrl.element.className = "form-control";
-      return ctrl;
-    };
-
-    return r;
-  }
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
 
 function createGridView(params) {
   params = Object.assign({
@@ -66,7 +41,21 @@ function boundField(params) {
     textAlign: 'center'
   }, params.headerStyle || {});
   if (params.nullText == null) params.nullText = '';
-  return new w.BoundField(params);
+  var field = new w.BoundField(params);
+  var validateRules = {
+    validateRules: params.validateRules
+  };
+  var r = Object.assign(field, validateRules);
+  var createControl = field.createControl;
+
+  field.createControl = function () {
+    var ctrl = createControl.apply(this, []);
+    if (params.emptyText) ctrl.element.placeholder = params.emptyText;
+    ctrl.element.className = "form-control";
+    return ctrl;
+  };
+
+  return r;
 }
 
 exports.boundField = boundField;

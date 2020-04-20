@@ -1,18 +1,8 @@
 "use strict";
 
-<<<<<<< HEAD
 function __export(m) {
   for (var p in m) {
     if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-=======
-define(["require", "exports", "./wrapper", "./checkbox-list", "./radio-list", "maishu-wuzhui", "./fields/index", "./fields/dropdown"], function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1, dropdown_1) {
-  "use strict";
-
-  function __export(m) {
-    for (var p in m) {
-      if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-    }
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
   }
 }
 
@@ -20,20 +10,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-__export(require("./wrapper"));
+__export(require("./controls/checkbox-list"));
 
-__export(require("./checkbox-list"));
+__export(require("./controls/radio-list"));
 
-__export(require("./radio-list"));
+var bound_field_1 = require("./fields/bound-field");
+
+exports.boundField = bound_field_1.boundField;
+
+var command_field_1 = require("./fields/command-field");
+
+exports.commandField = command_field_1.commandField;
+
+var custom_data_field_1 = require("./fields/custom-data-field");
+
+exports.customDataField = custom_data_field_1.customDataField;
+
+var date_time_field_1 = require("./fields/date-time-field");
+
+exports.dateTimeField = date_time_field_1.dateTimeField;
+
+var dropdown_field_1 = require("./fields/dropdown-field");
+
+exports.dropdownField = dropdown_field_1.dropdownField;
 
 __export(require("maishu-wuzhui"));
 
-<<<<<<< HEAD
-__export(require("./fields/index"));
-=======
-  __export(index_1);
+var grid_view_1 = require("./grid-view");
 
-  exports.dropdownField = dropdown_1.dropdownField;
-});
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
+exports.createGridView = grid_view_1.createGridView;
 //# sourceMappingURL=index.js.map

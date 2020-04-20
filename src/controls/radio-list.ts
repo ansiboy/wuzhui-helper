@@ -1,5 +1,5 @@
 import { DataSource } from 'maishu-wuzhui'
-import { errors } from './errors';
+import { errors } from '../errors';
 
 export async function radioList<T>(params: {
     element: HTMLElement, dataSource: DataSource<T>,

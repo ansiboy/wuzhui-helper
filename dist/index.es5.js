@@ -1,9 +1,5 @@
 /*!
-<<<<<<< HEAD
- * WUZHUI-HELPER v1.8.6
-=======
- * WUZHUI-HELPER v1.15.0
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
+ * WUZHUI-HELPER v1.8.8
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
@@ -97,10 +93,10 @@ define("wuzhui_helper", ["maishu-wuzhui"], function(__WEBPACK_EXTERNAL_MODULE_ma
 /************************************************************************/
 /******/ ({
 
-/***/ "./out-es5/checkbox-list.js":
-/*!**********************************!*\
-  !*** ./out-es5/checkbox-list.js ***!
-  \**********************************/
+/***/ "./out-es5/controls/checkbox-list.js":
+/*!*******************************************!*\
+  !*** ./out-es5/controls/checkbox-list.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -143,7 +139,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
+var errors_1 = __webpack_require__(/*! ../errors */ "./out-es5/errors.js");
 
 function checkboxList(params) {
   return __awaiter(this, void 0, void 0,
@@ -236,524 +232,10 @@ exports.checkboxList = checkboxList;
 
 /***/ }),
 
-/***/ "./out-es5/errors.js":
-/*!***************************!*\
-  !*** ./out-es5/errors.js ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.errors = {
-  argumentNull: function argumentNull(paramName) {
-    return new Error("Argument '" + paramName + "' can not be null.");
-  },
-  argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {
-    var msg = "Argument ".concat(argumentName, " ").concat(fieldName, " field can not be null or empty.");
-    return new Error(msg);
-  },
-  dataFieldValueNotArray: function dataFieldValueNotArray(dataField) {
-    var msg = "Type of dataitem ".concat(dataField, " field is not array.");
-    return new Error(msg);
-  }
-};
-//# sourceMappingURL=errors.js.map
-
-
-/***/ }),
-
-/***/ "./out-es5/fields/custom-data.js":
-/*!***************************************!*\
-  !*** ./out-es5/fields/custom-data.js ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var maishu_wuzhui_1 = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
-
-function customDataField(params) {
-  return new maishu_wuzhui_1.CustomField({
-    headerText: params.headerText,
-    headerStyle: params.headerStyle,
-    itemStyle: params.itemStyle,
-    createItemCell: function createItemCell() {
-      var cell = new maishu_wuzhui_1.GridViewDataCell({
-        render: function render(dataItem, element) {
-          var r = params.render(dataItem, element);
-          if (r) element.innerHTML = r;
-        }
-      });
-      return cell;
-    }
-  });
-}
-
-exports.customDataField = customDataField;
-//# sourceMappingURL=custom-data.js.map
-
-
-/***/ }),
-
-/***/ "./out-es5/fields/date-time.js":
-/*!*************************************!*\
-  !*** ./out-es5/fields/date-time.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-<<<<<<< HEAD
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-=======
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
-
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, maishu_wuzhui_1) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function dateTimeField(args) {
-    var field = new DateTimeField(args);
-    var validateRules = {
-      validateRules: args.validateRules
-    };
-    var r = Object.assign(field, validateRules);
-    return r;
-  }
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
-
-var custom_data_1 = __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js");
-
-<<<<<<< HEAD
-function dateTimeField(args) {
-  return custom_data_1.customDataField({
-    headerText: args.headerText,
-    headerStyle: {
-      textAlign: 'center',
-      width: '160px'
-    },
-    itemStyle: {
-      textAlign: 'center',
-      width: "160px"
-    },
-    render: function render(dataItem) {
-      var value = dataItem[args.dataField]; // if (typeof value == 'number')
-=======
-  var DateTimeField =
-  /*#__PURE__*/
-  function (_maishu_wuzhui_1$Boun) {
-    _inherits(DateTimeField, _maishu_wuzhui_1$Boun);
-
-    function DateTimeField(args) {
-      var _this;
-
-      _classCallCheck(this, DateTimeField);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(DateTimeField).call(this, Object.assign({
-        headerStyle: {
-          textAlign: 'center',
-          width: '160px'
-        },
-        itemStyle: {
-          textAlign: 'center',
-          width: "160px"
-        }
-      }, args)));
-      _this.emptyText = args.emptyText;
-      return _this;
-    }
-
-    _createClass(DateTimeField, [{
-      key: "createControl",
-      value: function createControl() {
-        var ctrl = _get(_getPrototypeOf(DateTimeField.prototype), "createControl", this).call(this);
-
-        var VALUE = "value";
-        Object.defineProperty(ctrl, VALUE, {
-          get: function get() {
-            var str = ctrl.element.value;
-            var value;
-
-            try {
-              value = new Date(Date.parse(str));
-            } catch (err) {}
-
-            return value;
-          },
-          set: function set(value) {
-            var str = toDateTimeString(value);
-            ctrl.element.value = str;
-          }
-        });
-        if (this.emptyText) ctrl.element.placeholder = this.emptyText;
-        ctrl.element.className = "form-control";
-        return ctrl;
-      }
-    }, {
-      key: "createItemCell",
-      value: function createItemCell(dataItem) {
-        var cell = _get(_getPrototypeOf(DateTimeField.prototype), "createItemCell", this).call(this, dataItem);
-
-        cell.formatValue = function (value) {
-          return toDateTimeString(value);
-        };
-
-        return cell;
-      }
-    }]);
-
-    return DateTimeField;
-  }(maishu_wuzhui_1.BoundField);
-
-  function toDateTimeString(datetime) {
-    if (datetime == null) return null;
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
-
-      return toDateTimeString(value);
-    }
-  });
-}
-
-exports.dateTimeField = dateTimeField;
-
-function toDateTimeString(datetime) {
-  if (datetime == null) return null;
-
-  if (typeof datetime == "string") {
-    datetime = new Date(datetime);
-  }
-
-  var d;
-  if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
-  var month = "".concat(d.getMonth() + 1);
-  month = month.length == 1 ? '0' + month : month;
-  var date = "".concat(d.getDate());
-  date = date.length == 1 ? '0' + date : date;
-  var hours = "".concat(d.getHours());
-  hours = hours.length == 1 ? '0' + hours : hours;
-  var minutes = "".concat(d.getMinutes());
-  minutes = minutes.length == 1 ? '0' + minutes : minutes;
-  return "".concat(d.getFullYear(), "-").concat(month, "-").concat(date, " ").concat(hours, ":").concat(minutes);
-}
-
-exports.toDateTimeString = toDateTimeString;
-//# sourceMappingURL=date-time.js.map
-
-
-/***/ }),
-
-/***/ "./out-es5/fields/dropdown.js":
-/*!************************************!*\
-  !*** ./out-es5/fields/dropdown.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
-
-function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function (resolve) {
-      resolve(value);
-    });
-  }
-
-  return new (P || (P = Promise))(function (resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, w) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  var emptyValue = "";
-
-  function dropdownField(params) {
-    var field = new DropdownField(params);
-    return field;
-  }
-
-  exports.dropdownField = dropdownField;
-
-  var DropdownField =
-  /*#__PURE__*/
-  function (_w$BoundField) {
-    _inherits(DropdownField, _w$BoundField);
-
-    function DropdownField(params) {
-      var _this;
-
-      _classCallCheck(this, DropdownField);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownField).call(this, params));
-
-      _get(_getPrototypeOf(DropdownField.prototype), "params", _assertThisInitialized(_this));
-
-      params.dataSource.select().then(function (r) {});
-      return _this;
-    }
-
-    _createClass(DropdownField, [{
-      key: "getParams",
-      value: function getParams() {
-        return this.params;
-      }
-    }, {
-      key: "getDataItems",
-      value: function getDataItems() {
-        return __awaiter(this, void 0, void 0,
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee() {
-          var r;
-          return regeneratorRuntime.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  if (this.dataItems) {
-                    _context.next = 5;
-                    break;
-                  }
-
-                  _context.next = 3;
-                  return this.getParams().dataSource.select();
-
-                case 3:
-                  r = _context.sent;
-                  this.dataItems = r.dataItems;
-
-                case 5:
-                  return _context.abrupt("return", this.dataItems);
-
-                case 6:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee, this);
-        }));
-      }
-    }, {
-      key: "createControl",
-      value: function createControl() {
-        var _this2 = this;
-
-        var element = document.createElement("select");
-        element.className = "form-control";
-
-        if (this.getParams().emptyText) {
-          var o = document.createElement("option");
-          o.innerText = this.getParams().emptyText;
-          o.value = emptyValue;
-          element.append(o);
-        }
-
-        this.getDataItems().then(function (dataItems) {
-          var options = dataItems.map(function (dataItem) {
-            var o = document.createElement("option");
-            o.innerText = dataItem[_this2.getParams().nameField];
-            o.value = dataItem[_this2.getParams().valueField];
-            return o;
-          });
-          element.append.apply(element, _toConsumableArray(options));
-        });
-        return {
-          element: element,
-
-          get value() {
-            return element.value;
-          },
-
-          set value(value) {
-            if (value == null) {
-              element.value = emptyValue;
-              return;
-            }
-
-            element.value = value;
-          }
-
-        };
-      }
-    }]);
-
-    return DropdownField;
-  }(w.BoundField);
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-//# sourceMappingURL=dropdown.js.map
-
-
-/***/ }),
-
-/***/ "./out-es5/fields/index.js":
-/*!*********************************!*\
-  !*** ./out-es5/fields/index.js ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var date_time_1 = __webpack_require__(/*! ./date-time */ "./out-es5/fields/date-time.js");
-
-exports.dateTimeField = date_time_1.dateTimeField;
-
-var custom_data_1 = __webpack_require__(/*! ./custom-data */ "./out-es5/fields/custom-data.js");
-
-exports.customDataField = custom_data_1.customDataField;
-//# sourceMappingURL=index.js.map
-
-
-/***/ }),
-
-/***/ "./out-es5/index.js":
-/*!**************************!*\
-  !*** ./out-es5/index.js ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-<<<<<<< HEAD
-=======
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"), __webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"), __webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js"), __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"), __webpack_require__(/*! ./fields/index */ "./out-es5/fields/index.js"), __webpack_require__(/*! ./fields/dropdown */ "./out-es5/fields/dropdown.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, wrapper_1, checkbox_list_1, radio_list_1, maishu_wuzhui_1, index_1, dropdown_1) {
-  "use strict";
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
-
-function __export(m) {
-  for (var p in m) {
-    if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-  }
-}
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__export(__webpack_require__(/*! ./wrapper */ "./out-es5/wrapper.js"));
-
-__export(__webpack_require__(/*! ./checkbox-list */ "./out-es5/checkbox-list.js"));
-
-__export(__webpack_require__(/*! ./radio-list */ "./out-es5/radio-list.js"));
-
-__export(__webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"));
-
-<<<<<<< HEAD
-__export(__webpack_require__(/*! ./fields/index */ "./out-es5/fields/index.js"));
-=======
-  __export(index_1);
-
-  exports.dropdownField = dropdown_1.dropdownField;
-}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
-//# sourceMappingURL=index.js.map
-
-
-/***/ }),
-
-/***/ "./out-es5/radio-list.js":
-/*!*******************************!*\
-  !*** ./out-es5/radio-list.js ***!
-  \*******************************/
+/***/ "./out-es5/controls/radio-list.js":
+/*!****************************************!*\
+  !*** ./out-es5/controls/radio-list.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -796,7 +278,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
+var errors_1 = __webpack_require__(/*! ../errors */ "./out-es5/errors.js");
 
 function radioList(params) {
   return __awaiter(this, void 0, void 0,
@@ -890,60 +372,41 @@ exports.radioList = radioList;
 
 /***/ }),
 
-/***/ "./out-es5/textbox.js":
-/*!****************************!*\
-  !*** ./out-es5/textbox.js ***!
-  \****************************/
+/***/ "./out-es5/errors.js":
+/*!***************************!*\
+  !*** ./out-es5/errors.js ***!
+  \***************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
-
-var TextBox = function TextBox(params) {
-  _classCallCheck(this, TextBox);
-
-  if (params == null) throw errors_1.errors.argumentNull("params");
-  if (!params.element) throw errors_1.errors.argumentFieldNull("params", "element");
-  if (!params.dataField) throw errors_1.errors.argumentFieldNull("params", "dataField");
-  if (!params.dataItem) throw errors_1.errors.argumentFieldNull("params", "dataItem");
-  if (!params.valueType) throw errors_1.errors.argumentFieldNull("params", "valuetype");
-  var element = params.element,
-      dataField = params.dataField,
-      dataItem = params.dataItem,
-      valueType = params.valueType;
-  var value = dataItem[dataField];
-  element.value = "".concat(value || "");
-
-  element.onchange = function () {
-    if (valueType == 'int') {
-      dataItem[dataField] = Number.parseInt(element.value);
-    } else if (valueType == 'float') {
-      dataItem[dataField] = Number.parseFloat(element.value);
-    } else {
-      dataItem[dataField] = element.value;
-    }
-  };
+exports.errors = {
+  argumentNull: function argumentNull(paramName) {
+    return new Error("Argument '" + paramName + "' can not be null.");
+  },
+  argumentFieldNull: function argumentFieldNull(argumentName, fieldName) {
+    var msg = "Argument ".concat(argumentName, " ").concat(fieldName, " field can not be null or empty.");
+    return new Error(msg);
+  },
+  dataFieldValueNotArray: function dataFieldValueNotArray(dataField) {
+    var msg = "Type of dataitem ".concat(dataField, " field is not array.");
+    return new Error(msg);
+  }
 };
-
-exports.TextBox = TextBox;
-//# sourceMappingURL=textbox.js.map
+//# sourceMappingURL=errors.js.map
 
 
 /***/ }),
 
-/***/ "./out-es5/wrapper.js":
-/*!****************************!*\
-  !*** ./out-es5/wrapper.js ***!
-  \****************************/
+/***/ "./out-es5/fields/bound-field.js":
+/*!***************************************!*\
+  !*** ./out-es5/fields/bound-field.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -956,11 +419,457 @@ Object.defineProperty(exports, "__esModule", {
 
 var w = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
 
-var errors_1 = __webpack_require__(/*! ./errors */ "./out-es5/errors.js");
+var errors_1 = __webpack_require__(/*! ../errors */ "./out-es5/errors.js");
 
-var textbox_1 = __webpack_require__(/*! ./textbox */ "./out-es5/textbox.js");
+function boundField(params) {
+  if (!params) throw errors_1.errors.argumentNull('params');
+  params.headerStyle = Object.assign({
+    textAlign: 'center'
+  }, params.headerStyle || {});
+  if (params.nullText == null) params.nullText = '';
+  var field = new w.BoundField(params);
+  var validateRules = {
+    validateRules: params.validateRules
+  };
+  var r = Object.assign(field, validateRules);
+  var createControl = field.createControl;
 
-<<<<<<< HEAD
+  field.createControl = function () {
+    var ctrl = createControl.apply(this, []);
+    if (params.emptyText) ctrl.element.placeholder = params.emptyText;
+    ctrl.element.className = "form-control";
+    return ctrl;
+  };
+
+  return r;
+}
+
+exports.boundField = boundField;
+//# sourceMappingURL=bound-field.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/fields/command-field.js":
+/*!*****************************************!*\
+  !*** ./out-es5/fields/command-field.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var w = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
+
+var errors_1 = __webpack_require__(/*! ../errors */ "./out-es5/errors.js");
+
+function commandField(params) {
+  if (!params) throw errors_1.errors.argumentNull('params');
+  return new w.CommandField(params);
+}
+
+exports.commandField = commandField;
+//# sourceMappingURL=command-field.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/fields/custom-data-field.js":
+/*!*********************************************!*\
+  !*** ./out-es5/fields/custom-data-field.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var maishu_wuzhui_1 = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
+
+function customDataField(params) {
+  return new maishu_wuzhui_1.CustomField({
+    headerText: params.headerText,
+    headerStyle: params.headerStyle,
+    itemStyle: params.itemStyle,
+    createItemCell: function createItemCell() {
+      var cell = new maishu_wuzhui_1.GridViewDataCell({
+        render: function render(dataItem, element) {
+          var r = params.render(dataItem, element);
+          if (r) element.innerHTML = r;
+        }
+      });
+      return cell;
+    }
+  });
+}
+
+exports.customDataField = customDataField;
+//# sourceMappingURL=custom-data-field.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/fields/date-time-field.js":
+/*!*******************************************!*\
+  !*** ./out-es5/fields/date-time-field.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var maishu_wuzhui_1 = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
+
+function dateTimeField(args) {
+  var field = new DateTimeField(args);
+  var validateRules = {
+    validateRules: args.validateRules
+  };
+  var r = Object.assign(field, validateRules);
+  return r;
+}
+
+exports.dateTimeField = dateTimeField;
+
+var DateTimeField =
+/*#__PURE__*/
+function (_maishu_wuzhui_1$Boun) {
+  _inherits(DateTimeField, _maishu_wuzhui_1$Boun);
+
+  function DateTimeField(args) {
+    var _this;
+
+    _classCallCheck(this, DateTimeField);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DateTimeField).call(this, Object.assign({
+      headerStyle: {
+        textAlign: 'center',
+        width: '160px'
+      },
+      itemStyle: {
+        textAlign: 'center',
+        width: "160px"
+      }
+    }, args)));
+    _this.emptyText = args.emptyText;
+    return _this;
+  }
+
+  _createClass(DateTimeField, [{
+    key: "createControl",
+    value: function createControl() {
+      var ctrl = _get(_getPrototypeOf(DateTimeField.prototype), "createControl", this).call(this);
+
+      var VALUE = "value";
+      Object.defineProperty(ctrl, VALUE, {
+        get: function get() {
+          var str = ctrl.element.value;
+          var value;
+
+          try {
+            value = new Date(Date.parse(str));
+          } catch (err) {}
+
+          return value;
+        },
+        set: function set(value) {
+          var str = toDateTimeString(value);
+          ctrl.element.value = str;
+        }
+      });
+      if (this.emptyText) ctrl.element.placeholder = this.emptyText;
+      ctrl.element.className = "form-control";
+      return ctrl;
+    }
+  }, {
+    key: "createItemCell",
+    value: function createItemCell(dataItem) {
+      var cell = _get(_getPrototypeOf(DateTimeField.prototype), "createItemCell", this).call(this, dataItem);
+
+      cell.formatValue = function (value) {
+        return toDateTimeString(value);
+      };
+
+      return cell;
+    }
+  }]);
+
+  return DateTimeField;
+}(maishu_wuzhui_1.BoundField);
+
+function toDateTimeString(datetime) {
+  if (datetime == null) return null;
+
+  if (typeof datetime == "string") {
+    datetime = new Date(datetime);
+  }
+
+  var d;
+  if (typeof datetime == 'number') d = new Date(datetime);else d = datetime;
+  var month = "".concat(d.getMonth() + 1);
+  month = month.length == 1 ? '0' + month : month;
+  var date = "".concat(d.getDate());
+  date = date.length == 1 ? '0' + date : date;
+  var hours = "".concat(d.getHours());
+  hours = hours.length == 1 ? '0' + hours : hours;
+  var minutes = "".concat(d.getMinutes());
+  minutes = minutes.length == 1 ? '0' + minutes : minutes;
+  return "".concat(d.getFullYear(), "-").concat(month, "-").concat(date, " ").concat(hours, ":").concat(minutes);
+}
+
+exports.toDateTimeString = toDateTimeString;
+//# sourceMappingURL=date-time-field.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/fields/dropdown-field.js":
+/*!******************************************!*\
+  !*** ./out-es5/fields/dropdown-field.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
+  function adopt(value) {
+    return value instanceof P ? value : new P(function (resolve) {
+      resolve(value);
+    });
+  }
+
+  return new (P || (P = Promise))(function (resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var w = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
+
+var emptyValue = "";
+
+function dropdownField(params) {
+  var field = new DropdownField(params);
+  return field;
+}
+
+exports.dropdownField = dropdownField;
+
+var DropdownField =
+/*#__PURE__*/
+function (_w$BoundField) {
+  _inherits(DropdownField, _w$BoundField);
+
+  function DropdownField(params) {
+    var _this;
+
+    _classCallCheck(this, DropdownField);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownField).call(this, params));
+
+    _get(_getPrototypeOf(DropdownField.prototype), "params", _assertThisInitialized(_this));
+
+    params.dataSource.select().then(function (r) {});
+    return _this;
+  }
+
+  _createClass(DropdownField, [{
+    key: "getParams",
+    value: function getParams() {
+      return this.params;
+    }
+  }, {
+    key: "getDataItems",
+    value: function getDataItems() {
+      return __awaiter(this, void 0, void 0,
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee() {
+        var r;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (this.dataItems) {
+                  _context.next = 5;
+                  break;
+                }
+
+                _context.next = 3;
+                return this.getParams().dataSource.select();
+
+              case 3:
+                r = _context.sent;
+                this.dataItems = r.dataItems;
+
+              case 5:
+                return _context.abrupt("return", this.dataItems);
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+    }
+  }, {
+    key: "createControl",
+    value: function createControl() {
+      var _this2 = this;
+
+      var element = document.createElement("select");
+      element.className = "form-control";
+
+      if (this.getParams().emptyText) {
+        var o = document.createElement("option");
+        o.innerText = this.getParams().emptyText;
+        o.value = emptyValue;
+        element.append(o);
+      }
+
+      this.getDataItems().then(function (dataItems) {
+        var options = dataItems.map(function (dataItem) {
+          var o = document.createElement("option");
+          o.innerText = dataItem[_this2.getParams().nameField];
+          o.value = dataItem[_this2.getParams().valueField];
+          return o;
+        });
+        element.append.apply(element, _toConsumableArray(options));
+      });
+      return {
+        element: element,
+
+        get value() {
+          return element.value;
+        },
+
+        set value(value) {
+          if (value == null) {
+            element.value = emptyValue;
+            return;
+          }
+
+          element.value = value;
+        }
+
+      };
+    }
+  }]);
+
+  return DropdownField;
+}(w.BoundField);
+//# sourceMappingURL=dropdown-field.js.map
+
+
+/***/ }),
+
+/***/ "./out-es5/grid-view.js":
+/*!******************************!*\
+  !*** ./out-es5/grid-view.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var w = __webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui");
+
 function createGridView(params) {
   params = Object.assign({
     pageSize: 10,
@@ -976,29 +885,6 @@ function createGridView(params) {
       buttonContainerClassName: 'pagination',
       showTotal: true
     };
-=======
-  function boundField(params) {
-    if (!params) throw errors_1.errors.argumentNull('params');
-    params.headerStyle = Object.assign({
-      textAlign: 'center'
-    }, params.headerStyle || {});
-    if (params.nullText == null) params.nullText = '';
-    var field = new w.BoundField(params);
-    var validateRules = {
-      validateRules: params.validateRules
-    };
-    var r = Object.assign(field, validateRules);
-    var createControl = field.createControl;
-
-    field.createControl = function () {
-      var ctrl = createControl.apply(this, []);
-      if (params.emptyText) ctrl.element.placeholder = params.emptyText;
-      ctrl.element.className = "form-control";
-      return ctrl;
-    };
-
-    return r;
->>>>>>> 4583a7e310f462972a0aa9d0e176c4a4fc454ed3
   }
 
   console.assert(params.element != null, 'element can not null.');
@@ -1008,48 +894,61 @@ function createGridView(params) {
 }
 
 exports.createGridView = createGridView;
+//# sourceMappingURL=grid-view.js.map
 
-function boundField(params) {
-  if (!params) throw errors_1.errors.argumentNull('params');
-  params.headerStyle = Object.assign({
-    textAlign: 'center'
-  }, params.headerStyle || {});
-  if (params.nullText == null) params.nullText = '';
-  return new w.BoundField(params);
+
+/***/ }),
+
+/***/ "./out-es5/index.js":
+/*!**************************!*\
+  !*** ./out-es5/index.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function __export(m) {
+  for (var p in m) {
+    if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+  }
 }
 
-exports.boundField = boundField;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function commandField(params) {
-  if (!params) throw errors_1.errors.argumentNull('params');
-  return new w.CommandField(params);
-}
+__export(__webpack_require__(/*! ./controls/checkbox-list */ "./out-es5/controls/checkbox-list.js"));
 
-exports.commandField = commandField;
+__export(__webpack_require__(/*! ./controls/radio-list */ "./out-es5/controls/radio-list.js"));
 
-function customField(params) {
-  if (!params) throw errors_1.errors.argumentNull('params');
-  params.headerStyle = Object.assign({
-    textAlign: 'center'
-  }, params.headerStyle || {});
-  var field = new w.CustomField(params);
-  return field;
-}
+var bound_field_1 = __webpack_require__(/*! ./fields/bound-field */ "./out-es5/fields/bound-field.js");
 
-exports.customField = customField;
+exports.boundField = bound_field_1.boundField;
 
-function dropdown(args) {
-  return new w.DropDown(args);
-}
+var command_field_1 = __webpack_require__(/*! ./fields/command-field */ "./out-es5/fields/command-field.js");
 
-exports.dropdown = dropdown;
+exports.commandField = command_field_1.commandField;
 
-function textbox(args) {
-  return new textbox_1.TextBox(args);
-}
+var custom_data_field_1 = __webpack_require__(/*! ./fields/custom-data-field */ "./out-es5/fields/custom-data-field.js");
 
-exports.textbox = textbox;
-//# sourceMappingURL=wrapper.js.map
+exports.customDataField = custom_data_field_1.customDataField;
+
+var date_time_field_1 = __webpack_require__(/*! ./fields/date-time-field */ "./out-es5/fields/date-time-field.js");
+
+exports.dateTimeField = date_time_field_1.dateTimeField;
+
+var dropdown_field_1 = __webpack_require__(/*! ./fields/dropdown-field */ "./out-es5/fields/dropdown-field.js");
+
+exports.dropdownField = dropdown_field_1.dropdownField;
+
+__export(__webpack_require__(/*! maishu-wuzhui */ "maishu-wuzhui"));
+
+var grid_view_1 = __webpack_require__(/*! ./grid-view */ "./out-es5/grid-view.js");
+
+exports.createGridView = grid_view_1.createGridView;
+//# sourceMappingURL=index.js.map
 
 
 /***/ }),
