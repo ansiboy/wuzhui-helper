@@ -2,7 +2,7 @@
     "name": "maishu-wuzhui-helper",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
-    "version": "1.8.8",
+    "version": "1.8.9",
     "scripts": {
         "build": "grunt build"
     },
@@ -32,5 +32,11 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ansiboy/wuzhui-helper.git"
-    }
+    },
+    "files": [
+        "dist/*",
+        "out/*",
+        "out-es5/*",
+        "src/*"
+    ]
 }

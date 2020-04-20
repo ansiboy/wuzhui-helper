@@ -1,5 +1,5 @@
 /*!
- * WUZHUI-HELPER v1.8.8
+ * WUZHUI-HELPER v1.8.9
  * https://github.com/ansiboy/wuzhui-helper
  * 
  * Copyright (c) 2016-2018, shu mai <ansiboy@163.com>
