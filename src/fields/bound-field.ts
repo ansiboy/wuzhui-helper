@@ -7,7 +7,10 @@ export interface FieldValidate {
     emptyText?: string,
 }
 
-export function boundField<T>(params: w.BoundFieldParams<T> & FieldValidate): w.BoundField<T> & FieldValidate {
+export function boundField<T>(params: w.BoundFieldParams<T> & FieldValidate & {
+    createControl?: w.BoundField<T>["createControl"],
+    renderItem?: (dataItem: T, element: HTMLElement) => void
+}): w.BoundField<T> & FieldValidate {
     if (!params) throw errors.argumentNull('params')
     params.headerStyle = Object.assign({ textAlign: 'center' } as CSSStyleDeclaration, params.headerStyle || {});
     if (params.nullText == null)
@@ -21,6 +24,11 @@ export function boundField<T>(params: w.BoundFieldParams<T> & FieldValidate): w.
 
     let createControl = field.createControl;
     field.createControl = function () {
+        if (params.createControl) {
+            let ctrl = params.createControl.apply(this, []);
+            return ctrl;
+        }
+
         let ctrl = createControl.apply(this, []);
         if (params.emptyText)
             (<HTMLInputElement>ctrl.element).placeholder = params.emptyText;
@@ -28,6 +36,24 @@ export function boundField<T>(params: w.BoundFieldParams<T> & FieldValidate): w.
         (<HTMLInputElement>ctrl.element).className = "form-control";
         return ctrl;
     }
+
+    let createItemCell = field.createItemCell;
+    field.createItemCell = function (dataItem: T) {
+        let cell = createItemCell.apply(this, [dataItem]) as w.GridViewEditableCell<T>;
+
+        let renderItem = params.renderItem;
+        let render = cell.render;
+        cell.render = (dataItem) => {
+            if (renderItem) {
+                renderItem.apply(cell, [dataItem, cell.element]);
+            }
+            else {
+                render.apply(cell, [dataItem]);
+            }
+        }
+        return cell;
+    }
+
 
     return r;
 }

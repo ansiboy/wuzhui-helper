@@ -38,7 +38,7 @@ export async function checkboxList<T>(params: {
         elementDataItems.push({ element: input, dataItem: o });
 
         input.onchange = function (e) {
-            dataItem[dataField] = elementDataItems.filter(o => o.element.checked).map(o => o.dataItem[valueField]) as any;
+            dataItem[dataField] = elementDataItems.filter(o => o.element.checked).map(o => (o.dataItem as any)[valueField]) as any;
         }
 
         element.appendChild(label);

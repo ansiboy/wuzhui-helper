@@ -40,7 +40,11 @@ class DropdownField<T, S> extends w.BoundField<T> {
         element.className = "form-control";
         if (this.getParams().emptyText) {
             let o = document.createElement("option");
-            o.innerText = this.getParams().emptyText;
+
+            let emptyText = this.getParams().emptyText;
+            if (emptyText != null)
+                o.innerText = emptyText;
+
             o.value = emptyValue;
             element.append(o);
         }

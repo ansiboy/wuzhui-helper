@@ -14,8 +14,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
-        libraryTarget: 'amd',
-        library: "wuzhui_helper",
+        libraryTarget: 'umd',
+        library: "wuzhui-helper",
     },
     mode: 'development', // production
     devtool: 'source-map',
@@ -23,7 +23,6 @@ module.exports = {
         new webpack.BannerPlugin(license)
     ],
     externals: [
-        'react', 'react-dom',
-        'maishu-chitu-service', 'maishu-dilu', 'maishu-wuzhui', 'maishu-ui-toolkit'
+        'react', 'react-dom', 'maishu-chitu-service', 'maishu-dilu', 'maishu-wuzhui', 'maishu-ui-toolkit'
     ]
 }
