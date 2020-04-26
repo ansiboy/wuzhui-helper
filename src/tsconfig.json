@@ -6,6 +6,7 @@
         "declaration": true,
         "baseUrl": "../",
         "outDir": "../out",
-        "strictBindCallApply": true
+        "strict": true,
+        "strictPropertyInitialization": false,
     }
 }

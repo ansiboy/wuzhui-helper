@@ -29,10 +29,10 @@ export async function radioList<T>(params: {
         controlElement.value = `${itemValue}`;
         nameElement.innerHTML = `${itemName}`;
         controlElement.onchange = function (e) {
-            params.dataItem[dataField] = itemValue;
+            (params.dataItem as any)[dataField] = itemValue;
         }
 
-        let value = params.dataItem[dataField] || params.defaultValue;
+        let value = (params.dataItem as any)[dataField] || params.defaultValue;
         if (value == itemValue) {
             controlElement.checked = true;
         }
