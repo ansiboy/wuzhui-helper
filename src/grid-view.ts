@@ -8,13 +8,13 @@ export function createGridView<T>(params: w.GridViewArguments<T> & { headerFixed
     }, params);
 
     if (params.pagerSettings == null) {
-        params.pagerSettings = {
+        params.pagerSettings = Object.assign(w.DataSourcePagingBar.defaultPagerSettings, {
             activeButtonClassName: 'active',
             buttonContainerWraper: 'ul',
             buttonWrapper: 'li',
             buttonContainerClassName: 'pagination',
-            showTotal: true
-        }
+            showTotal: true,
+        });
     }
 
     console.assert(params.element != null, 'element can not null.');
