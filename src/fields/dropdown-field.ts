@@ -17,7 +17,7 @@ class DropdownField<T, S> extends w.BoundField<T> {
     private dataItems: S[];
     constructor(params: DropdownFieldParams<T, S>) {
         super(params)
-        super.params
+     
         params.dataSource.select().then(r => {
 
         })

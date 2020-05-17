@@ -7,10 +7,12 @@ export interface FieldValidate {
     emptyText?: string,
 }
 
-export function boundField<T>(params: w.BoundFieldParams<T> & FieldValidate & {
+export type BoundFieldParams<T> = w.BoundFieldParams<T> & FieldValidate & {
     createControl?: w.BoundField<T>["createControl"],
     renderItem?: (dataItem: T, element: HTMLElement) => void
-}): w.BoundField<T> & FieldValidate {
+}
+
+export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> & FieldValidate {
     if (!params) throw errors.argumentNull('params')
     params.headerStyle = Object.assign({ textAlign: 'center' } as CSSStyleDeclaration, params.headerStyle || {});
     if (params.nullText == null)
