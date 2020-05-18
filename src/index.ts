@@ -12,6 +12,7 @@ export { dropdown } from "./controls/dropdown";
 export { checkboxList } from "./controls/checkbox-list";
 export { radioList } from "./controls/radio-list";
 export { createGridView } from "./grid-view";
+export { createPagingBar } from "./paging-bar";
 
 export * from "maishu-wuzhui";
 
