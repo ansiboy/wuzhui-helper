@@ -1,0 +1,17 @@
+{
+    "dependencies": {
+        "csstype": "^2.6.10",
+        "highlight.js": "^10.1.1",
+        "install": "^0.13.0",
+        "less": "^3.11.3",
+        "maishu-chitu-react": "^1.27.0",
+        "maishu-chitu-service": "^1.21.0",
+        "maishu-dilu": "^1.6.10",
+        "maishu-ui-toolkit": "^1.7.0",
+        "maishu-wuzhui": "^1.17.36",
+        "maishu-wuzhui-helper": "file:..",
+        "marked": "^1.1.0",
+        "npm": "^6.14.5",
+        "requirejs": "^2.3.6"
+    }
+}

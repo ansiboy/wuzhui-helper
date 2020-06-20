@@ -15,7 +15,7 @@ class DateTimeField<T> extends BoundField<T> {
     private emptyText: string | undefined;
     constructor(args: BoundFieldParams<T> & FieldValidate) {
         super(Object.assign({
-            headerStyle: { textAlign: 'center', width: '160px' },
+            headerStyle: { textAlign: 'center', width: `160px` },
             itemStyle: { textAlign: 'center', width: `160px` }
         }, args))
 
@@ -48,8 +48,8 @@ class DateTimeField<T> extends BoundField<T> {
         (<HTMLInputElement>ctrl.element).className = "form-control";
         return ctrl;
     }
-    createItemCell(dataItem: T) {
-        let cell = super.createItemCell(dataItem) as GridViewDataCell<T>;
+    createItemCell(dataItem: T, cellElement?: HTMLElement) {
+        let cell = super.createItemCell(dataItem, cellElement) as GridViewDataCell<T>;
         cell.formatValue = function (value: any) {
             return toDateTimeString(value) || "";
         }

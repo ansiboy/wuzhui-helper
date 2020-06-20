@@ -1,5 +1,3 @@
-
-
 export { boundField, FieldValidate, BoundFieldParams } from "./fields/bound-field";
 export { commandField } from "./fields/command-field";
 export { customDataField } from "./fields/custom-data-field";
@@ -13,7 +11,8 @@ export { checkboxList } from "./controls/checkbox-list";
 export { radioList } from "./controls/radio-list";
 export { createGridView } from "./grid-view";
 export { createPagingBar } from "./paging-bar";
+export { createDataItemDialog, DataItemDialog } from "./data-item-dialog";
 
 export * from "maishu-wuzhui";
-
+import "./style";
 

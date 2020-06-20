@@ -9,7 +9,7 @@ export interface FieldValidate {
 
 export type BoundFieldParams<T> = w.BoundFieldParams<T> & FieldValidate & {
     createControl?: w.BoundField<T>["createControl"],
-    renderItem?: (dataItem: T, element: HTMLElement) => void
+    renderItem?: w.GridViewEditableCell<T>["render"]
 }
 
 export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> & FieldValidate {
@@ -40,17 +40,17 @@ export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> & Fi
     }
 
     let createItemCell = field.createItemCell;
-    field.createItemCell = function (dataItem: T) {
-        let cell = createItemCell.apply(this, [dataItem]) as w.GridViewEditableCell<T>;
+    field.createItemCell = function (dataItem: T, cellElement) {
+        let cell = createItemCell.apply(this, [dataItem, cellElement]) as w.GridViewEditableCell<T>;
 
         let renderItem = params.renderItem;
         let render = cell.render;
-        cell.render = (dataItem) => {
+        cell.render = (...args) => {
             if (renderItem) {
-                renderItem.apply(cell, [dataItem, cell.element]);
+                renderItem.apply(cell, args);
             }
             else {
-                render.apply(cell, [dataItem]);
+                render.apply(cell, args);
             }
         }
         return cell;

@@ -6,18 +6,18 @@ export function customDataField<T>(params: {
     itemStyle?: Partial<CSSStyleDeclaration>,
     render: (dataItem: T, element: HTMLElement) => string | void
 }) {
-    return new CustomField({
+    return new CustomField<T>({
         headerText: params.headerText,
         headerStyle: params.headerStyle,
         itemStyle: params.itemStyle,
-        createItemCell() {
-            let cell = new GridViewDataCell({
+        createItemCell(dataItem, cellElement) {
+            let cell = new GridViewDataCell<T>({
                 render(dataItem: T, element) {
                     let r = params.render(dataItem, element)
                     if (r)
                         element.innerHTML = r
                 }
-            })
+            }, cellElement);
             return cell
         }
     });
