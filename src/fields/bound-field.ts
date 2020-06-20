@@ -36,6 +36,7 @@ export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> & Fi
             (<HTMLInputElement>ctrl.element).placeholder = params.emptyText;
 
         (<HTMLInputElement>ctrl.element).className = "form-control";
+        (<HTMLInputElement>ctrl.element).name = params.dataField;
         return ctrl;
     }
 

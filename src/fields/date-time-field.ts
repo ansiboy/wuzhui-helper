@@ -46,6 +46,7 @@ class DateTimeField<T> extends BoundField<T> {
             (<HTMLInputElement>ctrl.element).placeholder = this.emptyText;
 
         (<HTMLInputElement>ctrl.element).className = "form-control";
+        (<HTMLInputElement>ctrl.element).name = this.params.dataField;
         return ctrl;
     }
     createItemCell(dataItem: T, cellElement?: HTMLElement) {

@@ -1,5 +1,7 @@
-import { DataControlField, DataSource, BoundField, GridViewCellControl, GridViewCell, GridViewEditableCell } from "maishu-wuzhui";
+import { DataControlField, BoundField, GridViewCell, GridViewEditableCell } from "maishu-wuzhui";
 import { showDialog, hideDialog } from "maishu-ui-toolkit";
+import { FormValidator, ValidateField, Rule } from "maishu-dilu";
+import { boundField } from "./fields/bound-field";
 
 type Params<T> = {
     /** 窗体元素，使用 boostrap 创建 */
@@ -16,6 +18,7 @@ type Params<T> = {
 export class DataItemDialog<T> {
     private params: Params<T>;
     private dataCells: GridViewCell[];
+    private validator: FormValidator;
 
     constructor(params: Params<T>) {
         this.params = Object.assign({
@@ -31,12 +34,20 @@ export class DataItemDialog<T> {
 
             let itemStyle = c.itemStyle as CSSStyleDeclaration || {};
             delete itemStyle.width;
-
         })
+
+        type BoundField = ReturnType<typeof boundField>;
+        let validateFiels: ValidateField[] = (params.fields as BoundField[]).filter(c => c.validateRules != null && c.dataField != null)
+            .map(o => ({ name: o.dataField, rules: o.validateRules as Rule[] }))
+
+
+        this.validator = new FormValidator(params.element, ...validateFiels);
+
         this.createDialogElement();
     }
 
-    show(dataItem: T) {
+    show(dataItem?: T) {
+        dataItem = dataItem || {} as T;
         for (let i = 0; i < this.dataCells.length; i++) {
             if (this.dataCells[i].type == "GridViewEditableCell") {
                 let cell = this.dataCells[i] as GridViewEditableCell<T>;
@@ -58,6 +69,9 @@ export class DataItemDialog<T> {
                 dataItem[cell.dataField] = cell.controlValue;
             }
         }
+        if (!this.validator.check())
+            return;
+
         this.hide();
         if (this.params.onConfirm) {
             this.params.onConfirm(dataItem);
@@ -109,7 +123,8 @@ export class DataItemDialog<T> {
             labelElement.innerHTML = field.headerText;
             fieldElement.appendChild(labelElement);
 
-            let controlContainerElement = document.createElement("span");
+            let controlContainerElement = document.createElement("div");
+            controlContainerElement.className = "control";
             fieldElement.appendChild(controlContainerElement);
 
             let boundField = field as BoundField<T>;

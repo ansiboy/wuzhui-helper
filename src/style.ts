@@ -13,12 +13,15 @@ if (document.head != null) {
 let labelWidth = 80;
 let margin = 20;
 element.innerHTML = `
-    .${classNames.inputControl} label{
+    .${classNames.inputControl} label {
         width: ${labelWidth}px;
         float: left;
     }
-    .${classNames.inputControl} .form-control{
+    .${classNames.inputControl} .control {
         margin-left: ${labelWidth + margin}px;
         width: calc(100% - ${labelWidth + margin}px);
+    }
+    .${classNames.inputControl} .validationMessage {
+        color: red
     }
 `;
