@@ -1,5 +1,6 @@
 import { createDataItemDialog, boundField, DataItemDialog } from "maishu-wuzhui-helper";
 import React = require("react");
+import { rules as r } from "maishu-dilu";
 
 let dataItem = { name: "tom", age: 10 };
 type DataItem = typeof dataItem;
@@ -16,8 +17,17 @@ export default class extends React.Component {
             title: "编辑",
             element: this.dialogElement,
             fields: [
-                boundField<DataItem>({ dataField: "name", headerText: "名称" }),
-                boundField<DataItem>({ dataField: "age", headerText: "年龄" }),
+                boundField<DataItem>({
+                    dataField: "name", headerText: "名称",
+                    validateRules: [r.required("请输入名称")]
+                }),
+                boundField<DataItem>({
+                    dataField: "age", headerText: "年龄",
+                    validateRules: [
+                        r.required("请输入年龄"),
+                        r.numeric("请输入数字")
+                    ]
+                }),
             ]
         })
     }

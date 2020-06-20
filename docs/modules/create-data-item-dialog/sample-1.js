@@ -1,4 +1,4 @@
-define(["require", "exports", "maishu-wuzhui-helper", "react"], function (require, exports, maishu_wuzhui_helper_1, React) {
+define(["require", "exports", "maishu-wuzhui-helper", "react", "maishu-dilu"], function (require, exports, maishu_wuzhui_helper_1, React, maishu_dilu_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let dataItem = { name: "tom", age: 10 };
@@ -11,8 +11,17 @@ define(["require", "exports", "maishu-wuzhui-helper", "react"], function (requir
                 title: "编辑",
                 element: this.dialogElement,
                 fields: [
-                    maishu_wuzhui_helper_1.boundField({ dataField: "name", headerText: "名称" }),
-                    maishu_wuzhui_helper_1.boundField({ dataField: "age", headerText: "年龄" }),
+                    maishu_wuzhui_helper_1.boundField({
+                        dataField: "name", headerText: "名称",
+                        validateRules: [maishu_dilu_1.rules.required("请输入名称")]
+                    }),
+                    maishu_wuzhui_helper_1.boundField({
+                        dataField: "age", headerText: "年龄",
+                        validateRules: [
+                            maishu_dilu_1.rules.required("请输入年龄"),
+                            maishu_dilu_1.rules.numeric("请输入数字")
+                        ]
+                    }),
                 ]
             });
         }
