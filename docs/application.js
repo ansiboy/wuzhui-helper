@@ -14,7 +14,6 @@ define(["require", "exports", "maishu-chitu-react", "marked", "react", "react-do
                         else if (html.startsWith("</code>")) {
                             return `${html}</pre>`;
                         }
-                        console.log(html);
                         return html;
                     }
                 }

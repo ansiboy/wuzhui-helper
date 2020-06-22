@@ -17,3 +17,12 @@ declare module "marked" {
 declare var hljs: {
     highlightBlock: (element: HTMLElement) => void,
 };
+
+declare module "js/jquery.pin" {
+
+}
+
+interface JQuery {
+    pin();
+    pin({ containerSelector: any });
+}
