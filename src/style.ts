@@ -23,7 +23,7 @@ element.innerHTML = `
         float: left;
     }
     .${classNames.inputControl} .control {
-        margin-left: ${labelWidth + margin}px;
+        margin-left: ${margin}px;
         width: calc(100% - ${labelWidth + margin}px);
     }
     .${classNames.inputControl} .validationMessage {
