@@ -7,6 +7,7 @@
         "baseUrl": "../",
         "outDir": "../out",
         "strict": true,
+        "sourceMap": true,
         "strictPropertyInitialization": false,
     }
 }

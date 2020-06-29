@@ -17,24 +17,23 @@ class DropdownField<T, S> extends w.BoundField<T> {
     private dataItems: S[];
     constructor(params: DropdownFieldParams<T, S>) {
         super(params)
-     
-        params.dataSource.select().then(r => {
 
-        })
+
     }
 
     private getParams(): DropdownFieldParams<T, S> {
         return this.params as any;
     }
 
-    async getDataItems() {
+    private async getDataItems() {
         if (!this.dataItems) {
-            let r = await this.getParams().dataSource.select();
+            let r = await this.getParams().dataSource.select({ startRowIndex: 0, maximumRows: 1000 });
             this.dataItems = r.dataItems;
         }
 
         return this.dataItems;
     }
+
     createControl() {
         let element = document.createElement("select");
         element.className = "form-control";
@@ -70,5 +69,28 @@ class DropdownField<T, S> extends w.BoundField<T> {
                 element.value = value;
             }
         }
+    }
+
+    createItemCell(dataItem: T, cellElement: HTMLElement) {
+        let cell = super.createItemCell(dataItem, cellElement) as w.GridViewEditableCell<T>;
+        let cellRender = cell.render;
+        let field = this;
+        cell.render = function (dataItem, mode) {
+            mode = mode || "read";
+            let it = this as typeof cell;
+            let params = (it.field as DropdownField<T, S>).params as DropdownFieldParams<T, S>;
+            if (mode == "read") {
+                field.getDataItems().then(dataItems => {
+                    let item = dataItems.filter(o => o[params.valueField] as any == dataItem[params.dataField])[0];
+                    if (item != null) {
+                        cellElement.innerHTML = `${item[params.nameField]}` || "";
+                    }
+                })
+                return;
+            }
+
+            cellRender.apply(cell, [dataItem, mode]);
+        }
+        return cell;
     }
 }
