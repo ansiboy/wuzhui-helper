@@ -19,6 +19,7 @@ export class DataItemDialog<T> {
     private params: Params<T>;
     private dataCells: GridViewCell[];
     private validator: FormValidator;
+    #element: HTMLElement;
 
     constructor(params: Params<T>) {
         this.params = Object.assign({
@@ -43,7 +44,7 @@ export class DataItemDialog<T> {
 
         this.validator = new FormValidator(params.element, ...validateFiels);
 
-        this.createDialogElement();
+        this.#element = this.createDialogElement();
     }
 
     show(dataItem?: T) {
@@ -61,7 +62,27 @@ export class DataItemDialog<T> {
         hideDialog(this.params.element);
     }
 
-    private onConfirm() {
+    get title(): string | undefined {
+        let titleElement = this.#element.querySelector(".modal-title");
+        return titleElement?.innerHTML;
+    }
+    set title(value: string | undefined) {
+        let titleElement = this.#element.querySelector(".modal-title");
+        if (titleElement == null)
+            return;
+
+        titleElement.innerHTML = value || "";
+    }
+
+    get onConfirm() {
+        return this.params.onConfirm;
+    }
+
+    set onConfirm(value) {
+        this.params.onConfirm = value;
+    }
+
+    private invokeOnConfirm() {
         let dataItem = {} as any;
         for (let i = 0; i < this.dataCells.length; i++) {
             if (this.dataCells[i].type == "GridViewEditableCell") {
@@ -106,7 +127,7 @@ export class DataItemDialog<T> {
 
         this.params.element.appendChild(dialogElement);
         let confirmButton = dialogElement.querySelector(".btn-primary") as HTMLButtonElement;
-        confirmButton.onclick = () => this.onConfirm();
+        confirmButton.onclick = () => this.invokeOnConfirm();
 
         let bodyElement = dialogElement.querySelector(".modal-body") as HTMLElement;
         this.params.fields.forEach(field => {
@@ -133,6 +154,7 @@ export class DataItemDialog<T> {
             this.dataCells.push(dataCell);
         })
 
+        return dialogElement;
     }
 }
 

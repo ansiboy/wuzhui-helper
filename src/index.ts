@@ -1,4 +1,4 @@
-export { boundField, FieldValidate, BoundFieldParams } from "./fields/bound-field";
+export { boundField, BoundFieldParams } from "./fields/bound-field";
 export { commandField } from "./fields/command-field";
 export { customDataField } from "./fields/custom-data-field";
 export { customField } from "./fields/custom-field";

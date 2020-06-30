@@ -1,19 +1,14 @@
 import { BoundField, GridViewDataCell, BoundFieldParams } from "maishu-wuzhui";
-import { FieldValidate } from "./bound-field";
 
-export function dateTimeField<T>(args: BoundFieldParams<T> & FieldValidate): BoundField<T> & FieldValidate {
+export function dateTimeField<T>(args: BoundFieldParams<T>): BoundField<T> {
 
     let field = new DateTimeField<T>(args);
-    let validateRules: FieldValidate = {
-        validateRules: args.validateRules
-    }
-    let r = Object.assign(field, validateRules);
-    return r
+    return field;
 }
 
 class DateTimeField<T> extends BoundField<T> {
     private emptyText: string | undefined;
-    constructor(args: BoundFieldParams<T> & FieldValidate) {
+    constructor(args: BoundFieldParams<T>) {
         super(Object.assign({
             headerStyle: { textAlign: 'center', width: `160px` },
             itemStyle: { textAlign: 'center', width: `160px` }

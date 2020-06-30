@@ -31,6 +31,7 @@ export default class extends React.Component {
                     dataField: "country_id",
                     nameField: "name",
                     valueField: "id",
+                    emptyText: "请选择国家"
                 }),
                 commandField({ showEditButton: true })
             ]

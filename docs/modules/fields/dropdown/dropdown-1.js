@@ -41,6 +41,7 @@ define(["require", "exports", "react", "maishu-wuzhui-helper"], function (requir
                         dataField: "country_id",
                         nameField: "name",
                         valueField: "id",
+                        emptyText: "请选择国家"
                     }),
                     maishu_wuzhui_helper_1.commandField({ showEditButton: true })
                 ]

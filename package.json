@@ -2,7 +2,7 @@
     "name": "maishu-wuzhui-helper",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
-    "version": "1.8.188",
+    "version": "1.8.203",
     "scripts": {
         "build": "grunt build"
     },
@@ -11,7 +11,7 @@
         "maishu-dilu": "^1.6.10",
         "maishu-toolkit": "^1.4.13",
         "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "^1.17.54",
+        "maishu-wuzhui": "^1.17.72",
         "remove": "^0.1.5"
     },
     "devDependencies": {

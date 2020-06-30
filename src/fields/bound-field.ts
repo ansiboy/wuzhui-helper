@@ -2,27 +2,23 @@ import * as w from 'maishu-wuzhui';
 import { errors } from '../errors';
 import { Rule } from "maishu-dilu";
 
-export interface FieldValidate {
-    validateRules?: Rule[],
-    emptyText?: string,
-}
 
-export type BoundFieldParams<T> = w.BoundFieldParams<T> & FieldValidate & {
+export type BoundFieldParams<T> = w.BoundFieldParams<T> & {
     createControl?: w.BoundField<T>["createControl"],
-    renderItem?: w.GridViewEditableCell<T>["render"]
+    renderCell?: (cell: w.GridViewCell, dataItem: T, mode?: "read" | "edit") => void
 }
 
-export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> & FieldValidate {
+export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> {
     if (!params) throw errors.argumentNull('params')
     params.headerStyle = Object.assign({ textAlign: 'center' } as CSSStyleDeclaration, params.headerStyle || {});
     if (params.nullText == null)
         params.nullText = '';
 
     let field = new w.BoundField<T>(params);
-    let validateRules: FieldValidate = {
-        validateRules: params.validateRules
-    }
-    let r = Object.assign(field, validateRules);
+    // let validateRules = {
+    //     validateRules: params.validateRules
+    // }
+    // let r = Object.assign(field, validateRules);
 
     let createControl = field.createControl;
     field.createControl = function () {
@@ -32,31 +28,29 @@ export function boundField<T>(params: BoundFieldParams<T>): w.BoundField<T> & Fi
         }
 
         let ctrl = createControl.apply(this, []);
-        if (params.emptyText)
-            (<HTMLInputElement>ctrl.element).placeholder = params.emptyText;
+        // if (params.emptyText)
+        //     (<HTMLInputElement>ctrl.element).placeholder = params.emptyText;
 
         (<HTMLInputElement>ctrl.element).className = "form-control";
-        (<HTMLInputElement>ctrl.element).name = params.dataField;
+        // (<HTMLInputElement>ctrl.element).name = params.dataField;
         return ctrl;
     }
 
     let createItemCell = field.createItemCell;
     field.createItemCell = function (dataItem: T, cellElement) {
         let cell = createItemCell.apply(this, [dataItem, cellElement]) as w.GridViewEditableCell<T>;
-
-        let renderItem = params.renderItem;
         let render = cell.render;
-        cell.render = (...args) => {
-            if (renderItem) {
-                renderItem.apply(cell, args);
+        cell.render = (dataItem, mode?) => {
+            if (params.renderCell) {
+                params.renderCell(cell, dataItem, mode)
             }
             else {
-                render.apply(cell, args);
+                render.apply(cell, [dataItem, mode]);
             }
         }
         return cell;
     }
 
 
-    return r;
+    return field;
 }
