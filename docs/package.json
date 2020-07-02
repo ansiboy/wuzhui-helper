@@ -4,7 +4,7 @@
         "csstype": "^2.6.10",
         "highlight.js": "^10.1.1",
         "install": "^0.13.0",
-        "jquery": "^1.9.1",
+        "jquery": "^3.5.1",
         "less": "^3.11.3",
         "maishu-chitu-react": "^1.27.0",
         "maishu-chitu-service": "^1.21.0",
