@@ -25,6 +25,7 @@ element.innerHTML = `
     .${classNames.inputControl} .control {
         margin-left: ${margin}px;
         width: calc(100% - ${labelWidth + margin}px);
+        float: left;
     }
     .${classNames.inputControl} .validationMessage {
         color: red

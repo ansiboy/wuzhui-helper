@@ -2,7 +2,7 @@
     "name": "maishu-wuzhui-helper",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
-    "version": "1.8.203",
+    "version": "1.8.205",
     "scripts": {
         "build": "grunt build"
     },

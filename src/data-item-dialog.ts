@@ -13,6 +13,7 @@ type Params<T> = {
     cancelButtonText?: string,
     confirmButtonText?: string,
     title?: string
+    onCancel?: () => void,
 }
 
 export class DataItemDialog<T> {
@@ -82,6 +83,13 @@ export class DataItemDialog<T> {
         this.params.onConfirm = value;
     }
 
+    get onCancel() {
+        return this.params.onCancel;
+    }
+    set onCancel(value) {
+        this.params.onCancel = value;
+    }
+
     private invokeOnConfirm() {
         let dataItem = {} as any;
         for (let i = 0; i < this.dataCells.length; i++) {
@@ -96,6 +104,12 @@ export class DataItemDialog<T> {
         this.hide();
         if (this.params.onConfirm) {
             this.params.onConfirm(dataItem);
+        }
+    }
+
+    private invokeOnCancel() {
+        if (this.params.onCancel) {
+            this.params.onCancel();
         }
     }
 
@@ -128,6 +142,8 @@ export class DataItemDialog<T> {
         this.params.element.appendChild(dialogElement);
         let confirmButton = dialogElement.querySelector(".btn-primary") as HTMLButtonElement;
         confirmButton.onclick = () => this.invokeOnConfirm();
+        let cancelButton = dialogElement.querySelector(".btn-default") as HTMLButtonElement;
+        cancelButton.onclick = () => this.invokeOnCancel();
 
         let bodyElement = dialogElement.querySelector(".modal-body") as HTMLElement;
         this.params.fields.forEach(field => {
