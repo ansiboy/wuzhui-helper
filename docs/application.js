@@ -1,4 +1,4 @@
-define(["require", "exports", "maishu-chitu-react", "marked", "react", "react-dom"], function (require, exports, maishu_chitu_react_1, marked, React, ReactDOM) {
+define(["require", "exports", "maishu-chitu-react", "marked", "react", "react-dom", "js/highlight/highlight.pack", "js/marked"], function (require, exports, maishu_chitu_react_1, marked, React, ReactDOM) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class MyApplication extends maishu_chitu_react_1.Application {

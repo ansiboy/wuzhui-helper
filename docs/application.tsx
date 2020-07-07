@@ -2,6 +2,8 @@ import { Application, Page } from "maishu-chitu-react";
 import * as marked from "marked";
 import * as React from "react";
 import ReactDOM = require("react-dom");
+import "js/highlight/highlight.pack";
+import "js/marked";
 
 class MyApplication extends Application {
 

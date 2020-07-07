@@ -21,6 +21,7 @@ requirejs.config({
         "maishu-chitu-react": "node_modules/maishu-chitu-react/dist/index",
         "maishu-chitu-service": "node_modules/maishu-chitu-service/dist/index",
         "maishu-dilu": "node_modules/maishu-dilu/dist/index",
+        "maishu-toolkit": "node_modules/maishu-toolkit/dist/index",
         "maishu-ui-toolkit": "node_modules/maishu-ui-toolkit/dist/index",
         "maishu-wuzhui": "node_modules/maishu-wuzhui/dist/index",
         "maishu-wuzhui-helper": "node_modules/maishu-wuzhui-helper/dist/index",
