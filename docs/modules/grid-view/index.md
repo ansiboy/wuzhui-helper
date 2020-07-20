@@ -2,16 +2,16 @@
 
 ## 示例一
 
-<sample name="table-element"></sample>
+<sample path="table-element"></sample>
 
 ## 代码
 
-<code name="table-element.tsx" class="language-js"></code>
+<code path="table-element.tsx" class="language-js"></code>
 
 ## 示例二
 
-<sample name="div-element"></sample>
+<sample path="div-element"></sample>
 
 ## 代码
 
-<code name="div-element.tsx" class="language-js"></code>
+<code path="div-element.tsx" class="language-js"></code>

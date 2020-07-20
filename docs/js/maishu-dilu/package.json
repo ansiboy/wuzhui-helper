@@ -1,0 +1,47 @@
+{
+  "_from": "maishu-dilu@latest",
+  "_id": "maishu-dilu@1.6.10",
+  "_inBundle": false,
+  "_integrity": "sha512-BWiUdj3P05lg59xN6jgtukUShRNPNBE2JDFBb7ARTtk24eBzVh9mCLL6djeefw7yRB2NpMc4SqVqLUdgUKDt5A==",
+  "_location": "/maishu-dilu",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "maishu-dilu@latest",
+    "name": "maishu-dilu",
+    "escapedName": "maishu-dilu",
+    "rawSpec": "latest",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/maishu-dilu/-/maishu-dilu-1.6.10.tgz",
+  "_shasum": "6b1fff1304b39d7856cc1565fc0f662552b30bcc",
+  "_spec": "maishu-dilu@latest",
+  "_where": "D:\\projects\\wuzhui-helper",
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-shell": "^2.1.0",
+    "grunt-webpack": "^3.1.3",
+    "load-grunt-tasks": "^4.0.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  },
+  "main": "dist/index.js",
+  "name": "maishu-dilu",
+  "scripts": {
+    "build": "grunt default"
+  },
+  "types": "./out/index.d.ts",
+  "version": "1.6.10"
+}

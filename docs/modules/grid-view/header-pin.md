@@ -2,8 +2,8 @@
 
 ## 示例一
 
-<sample name="header-pin"></sample>
+<sample path="header-pin"></sample>
 
 ## 代码
 
-<code name="header-pin.tsx" class="language-js"></code>
+<code path="header-pin.tsx" class="language-js"></code>

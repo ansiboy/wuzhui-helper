@@ -2,12 +2,14 @@
     "name": "maishu-wuzhui-helper",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
-    "version": "1.8.205",
+    "version": "1.8.206",
     "scripts": {
         "build": "grunt build"
     },
     "dependencies": {
+        "@types/jquery": "^3.5.0",
         "bootstrap-datepicker": "^1.9.0",
+        "csstype": "^2.6.11",
         "maishu-dilu": "^1.6.10",
         "maishu-toolkit": "^1.4.13",
         "maishu-ui-toolkit": "^1.2.2",

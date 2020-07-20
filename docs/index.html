@@ -1,23 +1,64 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>wuzhui</title>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="css/site.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="js/highlight/styles/rainbow.css">
-
-</head>
+<head></head>
 
 <body>
-    <div class="container" style="max-width:1024px;">
+    <script>
+        let masterPageElement = document.createElement("div");
+        masterPageElement.innerHTML = `<div class="main">
+            <article>
+            </article>
+        </div>
+        <footer>
+        Power By <a href="https://ansiboy.github.io/markdown-doc">markdown-doc</a>
+        </footer>`;
+        window["config"] = {
+            masterPageElement,
+            requirejs: {
+                baseUrl: "./",
+                paths: {
+                    "react": "js/react/umd/react.development",
+                    "react-dom": "js/react-dom/umd/react-dom.development",
+                    "jquery": "js/jquery/dist/jquery",
+                    "maishu-dilu": "js/maishu-dilu/dist/index",
+                    "maishu-toolkit": "js/maishu-toolkit/dist/index",
+                    "maishu-ui-toolkit": "js/maishu-ui-toolkit/dist/index",
+                    "maishu-wuzhui": "js/maishu-wuzhui/dist/index",
+                    "maishu-wuzhui-helper": "js/maishu-wuzhui-helper/dist/index",
+                    "../dist/application": "js/maishu-markdonw-doc/dist/application"
+                }
+            }
+        }
+    </script>
+    <style>
+        .index #home-url {
+            display: none;
+        }
+
+        /* menu {
+            float: unset;
+        }
+
+        .main>div>menu {
+            margin-top: 6px;
+        }
+
+        .index .main>div>menu {
+            display: none;
+            ;
+        } */
+
+        #home-url {
+            /* float: left; */
+            /* padding-left: 40px;
+            padding-top: 40px; */
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/require.js/2.3.6/require.js"
+        data-main="js/maishu-markdonw-doc/out/index"></script>
+    <div>
 
     </div>
-
-    <script src="node_modules/requirejs/require.js" data-main="index"></script>
 </body>
 
 </html>

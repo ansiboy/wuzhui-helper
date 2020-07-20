@@ -4,31 +4,35 @@
         "module": "amd",
         "baseUrl": "./",
         "jsx": "react",
+        "esModuleInterop": true,
         "paths": {
             "csstype": [
-                "./node_modules/csstype/index.d.ts"
+                "../node_modules/csstype/index.d.ts"
             ],
             "maishu-chitu": [
-                "./node_modules/maishu-chitu/out/index.d.ts"
+                "./js/maishu-chitu/out/index.d.ts"
             ],
             "maishu-dilu": [
-                "./node_modules/maishu-dilu/out/index.d.ts"
+                "./js/maishu-dilu/out/index.d.ts"
             ],
             "maishu-chitu-react": [
-                "./node_modules/maishu-chitu-react/out/index.d.ts"
+                "./js/maishu-chitu-react/out/index.d.ts"
             ],
             "maishu-chitu-service": [
-                "./node_modules/maishu-chitu-service/out/index.d.ts"
+                "./js/maishu-chitu-service/out/index.d.ts"
             ],
             "maishu-toolkit": [
-                "./node_modules/maishu-toolkit/out/index.d.ts"
+                "./js/maishu-toolkit/out/index.d.ts"
             ],
             "maishu-wuzhui": [
-                "./node_modules/maishu-wuzhui/out/index.d.ts"
+                "./js/maishu-wuzhui/out/index.d.ts"
             ],
             "maishu-wuzhui-helper": [
                 "../out/index.d.ts"
             ]
-        }
+        },
     },
+    "exclude": [
+        "js"
+    ]
 }

@@ -1,0 +1,57 @@
+{
+  "_from": "maishu-wuzhui@1.17.72",
+  "_id": "maishu-wuzhui@1.17.72",
+  "_inBundle": false,
+  "_integrity": "sha512-QPyXsTAmosmqqktr6B+/9tIvFaKNNoP4lqKxXQ6CvXMjBepSV7KNnk+y8QE3J2ZOBEQRXjEHdAx5naehDbK5JA==",
+  "_location": "/maishu-wuzhui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "maishu-wuzhui@1.17.72",
+    "name": "maishu-wuzhui",
+    "escapedName": "maishu-wuzhui",
+    "rawSpec": "1.17.72",
+    "saveSpec": null,
+    "fetchSpec": "1.17.72"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/maishu-wuzhui/-/maishu-wuzhui-1.17.72.tgz",
+  "_shasum": "24333c6fa6e6fd1534252bf14953b399f1bec40a",
+  "_spec": "maishu-wuzhui@1.17.72",
+  "_where": "D:\\projects\\wuzhui-helper",
+  "bundleDependencies": false,
+  "dependencies": {
+    "maishu-dilu": "^1.6.10",
+    "maishu-toolkit": "^1.4.14"
+  },
+  "deprecated": false,
+  "description": "它是一个简洁，设计优雅，易于扩展，易于使用的表格控件",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^8.0.0",
+    "grunt-shell": "^2.1.0",
+    "grunt-webpack": "^3.1.3",
+    "load-grunt-tasks": "^4.0.0",
+    "mocha": "^8.0.1",
+    "mock-browser": "^0.92.14",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.0"
+  },
+  "files": [
+    "dist",
+    "out"
+  ],
+  "main": "./dist/index.js",
+  "name": "maishu-wuzhui",
+  "scripts": {
+    "build": "grunt build"
+  },
+  "types": "./out/index.d.ts",
+  "version": "1.17.72"
+}
