@@ -1,0 +1,10 @@
+{
+    "port": 7353,
+    "processors": {
+        "StaticFileRequestProcessor": {
+            "contentTypes": {
+                ".md": "text/plaint"
+            }
+        }
+    }
+}

@@ -32,10 +32,10 @@ export class DataItemDialog<T> {
         params.fields.forEach(c => {
             let headerStyle = c.headerStyle as CSSStyleDeclaration || {};
             headerStyle.textAlign = "right";
-            delete headerStyle.width;
+            delete (headerStyle as any).width;
 
             let itemStyle = c.itemStyle as CSSStyleDeclaration || {};
-            delete itemStyle.width;
+            delete (itemStyle as any).width;
         })
 
         type BoundField = ReturnType<typeof boundField>;
