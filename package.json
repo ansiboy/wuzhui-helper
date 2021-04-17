@@ -2,7 +2,7 @@
     "name": "maishu-wuzhui-helper",
     "main": "./dist/index.js",
     "types": "./out/index.d.ts",
-    "version": "1.9.5",
+    "version": "1.9.8",
     "scripts": {
         "build": "grunt build"
     },
@@ -11,7 +11,7 @@
         "maishu-dilu": "^1.8.3",
         "maishu-toolkit": "^1.6.3",
         "maishu-ui-toolkit": "^1.2.2",
-        "maishu-wuzhui": "^1.18.0"
+        "maishu-wuzhui": "^1.21.8"
     },
     "devDependencies": {
         "@babel/core": "^7.4.4",

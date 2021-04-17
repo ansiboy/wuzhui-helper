@@ -1,10 +1,11 @@
-import { CustomField, GridViewDataCell } from "maishu-wuzhui";
+import { CustomField, GridViewDataCell, FieldValidation } from "maishu-wuzhui";
 
 export function customDataField<T>(params: {
     headerText?: string,
     headerStyle?: Partial<CSSStyleDeclaration>,
     itemStyle?: Partial<CSSStyleDeclaration>,
-    render: (dataItem: T, element: HTMLElement) => string | void
+    render: (dataItem: T, element: HTMLElement) => string | void,
+    validation?: FieldValidation["validation"],
 }) {
     return new CustomField<T>({
         headerText: params.headerText,
@@ -19,6 +20,7 @@ export function customDataField<T>(params: {
                 }
             }, cellElement);
             return cell
-        }
+        },
+        validation: params.validation,
     });
 }

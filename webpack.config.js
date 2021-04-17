@@ -23,6 +23,6 @@ module.exports = {
         new webpack.BannerPlugin(license)
     ],
     externals: [
-        'react', 'react-dom', 'maishu-chitu-service', 'maishu-dilu', 'maishu-ui-toolkit',// 'maishu-wuzhui',
+        'react', 'react-dom', 'maishu-chitu-service', 'maishu-dilu', 'maishu-ui-toolkit', 'maishu-wuzhui',
     ]
 }
